@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL and PLY scan files back.">
+    <link rel="stylesheet" href="/assets/css/tailwind.css" />
+
+    <!--
+    debugging info
+    =============================
+      site.name:  {{ site.name }}
+      site.url:   {{ site.url }}
+      title:      {{ title}}
+      build:      {{ buildInfo.hash }}
+    ==============================
+    -->
+
+  <!-- analytics -->
+{% if env.environment == "dev" %}
+  <!-- this is dev mode -->
+{% else %}
+  <script defer src="https://umami.10w.uk/script.js" data-website-id="071aed35-9483-4a55-9814-a8d15d89c96c"></script>
+{% endif %}
+
+</head>

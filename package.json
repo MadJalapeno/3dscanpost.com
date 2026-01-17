@@ -1,0 +1,25 @@
+{
+   "scripts": {
+    "start": "concurrently \"npm run dev:*\"",
+    "dev:11ty": "NODE_ENV=dev npx @11ty/eleventy --serve --port=8080",
+    "dev:tw": "tailwindcss -i src/assets/css/tailwind.css -o _site/assets/css/tailwind.css --watch",
+    "build": "npx @11ty/eleventy && npx tailwindcss -i src/assets/css/tailwind.css -c tailwind.config.js -o _site/assets/css/tailwind.css"
+    },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "concurrently": "^9.1.2",
+    "daisyui": "^5.0.6",
+    "tailwindcss": "^4.0.14"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^6.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@tailwindcss/cli": "^4.0.8",
+    "@tailwindcss/postcss": "^4.0.7",
+    "dotenv": "^16.4.7",
+    "path": "^0.12.7",
+    "postcss": "^8.5.2"
+  }
+}

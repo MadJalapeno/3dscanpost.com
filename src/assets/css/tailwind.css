@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography"; /* https://github.com/tailwindlabs/tailwindcss-typography */
+
+@plugin "daisyui"{}
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #10b981;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  color-scheme: "dark";
+}
