@@ -3,7 +3,7 @@
     "start": "concurrently \"npm run dev:*\"",
     "dev:11ty": "NODE_ENV=dev npx @11ty/eleventy --serve --port=8080",
     "dev:tw": "tailwindcss -i src/assets/css/tailwind.css -o _site/assets/css/tailwind.css --watch",
-    "build": "npx @11ty/eleventy && npx tailwindcss -i src/assets/css/tailwind.css -c tailwind.config.js -o _site/assets/css/tailwind.css"
+    "build": "ELEVENTY_PRODUCTION=true npx @11ty/eleventy && NODE_ENV=production npx tailwindcss -i src/assets/css/tailwind.css -c tailwind.config.js -o _site/assets/css/tailwind.css"
     },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
