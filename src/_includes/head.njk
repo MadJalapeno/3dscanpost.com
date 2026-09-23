@@ -5,26 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta name="description" content="Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL and PLY scan files back.">
-    <meta property="og:title" content="3D Scanning Service by Mail">
-    <meta property="og:description" content="Professional 3D scanning service...">
+    <meta name="keywords" content="3D scanning, STL files, PLY files, laser scanning, 3D scan service, mail-in scanning">
+    <meta name="author" content="3DScanPost">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://3dscanpost.com{% if page.url != '/' %}{{ page.url }}{% endif %}">
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL and PLY scan files back.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://3dscanpost.com{% if page.url != '/' %}{{ page.url }}{% endif %}">
+    <meta property="og:image" content="https://3dscanpost.com/assets/images/og-image.jpg">
+    <meta property="og:image:alt" content="3D Scanning Service - 3DScanPost">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="Professional 3D scanning service for hobbyists and small businesses">
+    <meta name="twitter:image" content="https://3dscanpost.com/assets/images/og-image.jpg">
+
+    <!-- Favicon and Manifest -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#1f2937">
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://umami.10w.uk">
+    <link rel="preconnect" href="https://stats.jala.dev">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
 
-    <!--
-    debugging info
-    =============================
-      site.name:  {{ site.name }}
-      site.url:   {{ site.url }}
-      title:      {{ title}}
-      build:      {{ buildInfo.hash }}
-    ==============================
-    -->
+{% include "structured-data.njk" %}
+
+-    <!--                                                                                                                                               
+ 24 -    debugging info                                                                                                                                     
+ 25 -    =============================                                                                                                                      
+ 26 -      site.name:  {{ site.name }}                                                                                                                      
+ 27 -      site.url:   {{ site.url }}                                                                                                                       
+ 28 -      title:      {{ title}}                                                                                                                           
+ 29 -      build:      {{ buildInfo.hash }}                                                                                                                 
+ 30 -    ==============================                                                                                                                     
+ 31 -    --> 
 
   <!-- analytics -->
 {% if env.environment == "dev" %}
   <!-- this is dev mode -->
 {% else %}
-  <script defer src="https://umami.10w.uk/script.js" data-website-id="071aed35-9483-4a55-9814-a8d15d89c96c"></script>
   <script
     src="https://stats.jala.dev/api/script.js?siteId=7e792edf4cc5"
     defer

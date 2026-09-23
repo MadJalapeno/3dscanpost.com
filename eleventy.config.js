@@ -1,4 +1,4 @@
-const now = String(Date.now())
+const now = new Date();
 
 // Import 11ty plugins
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
@@ -10,6 +10,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/assets/scans/");
   eleventyConfig.addPassthroughCopy("src/assets/images/");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/manifest.webmanifest");
+  eleventyConfig.addPassthroughCopy("src/_headers");
 
   eleventyConfig.addWatchTarget("src");
   eleventyConfig.setServerOptions({
@@ -21,13 +24,22 @@ export default function (eleventyConfig) {
 
   // 11ty Plugins
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  
+
+  // Global data
+  eleventyConfig.addGlobalData("buildTime", now);
+
   // Shortcodes
   eleventyConfig.addShortcode('version', function () {
-    return now
+    return String(now.getTime())
   });
   eleventyConfig.addShortcode('year', function () {
-    return new Date().getFullYear()
+    return now.getFullYear()
+  });
+
+  // Filters
+  eleventyConfig.addFilter("dateFilter", function(date) {
+    const d = date instanceof Date ? date : new Date(date);
+    return d.toISOString().split('T')[0];
   });
 
   eleventyConfig.addShortcode("email", function(address, displayText = null) {

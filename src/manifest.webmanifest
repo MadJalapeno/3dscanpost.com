@@ -1,0 +1,22 @@
+{
+  "name": "3DScanPost - Professional 3D Scanning Service",
+  "short_name": "3DScanPost",
+  "description": "Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL and PLY scan files back.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#1f2937",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
