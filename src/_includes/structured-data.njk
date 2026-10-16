@@ -1,81 +1,85 @@
+{%- set businessGraph = [
+  {
+    "@type": "WebSite",
+    "@id": site.url + "/#website",
+    "url": site.url + "/",
+    "name": site.name,
+    "description": site.description,
+    "inLanguage": "en-US",
+    "publisher": { "@id": site.url + "/#business" }
+  },
+  {
+    "@type": "ProfessionalService",
+    "@id": site.url + "/#business",
+    "name": site.name,
+    "url": site.url + "/",
+    "description": site.description,
+    "logo": site.logo,
+    "image": site.ogImage,
+    "email": "contact@3dscanpost.com",
+    "priceRange": "$$",
+    "foundingDate": "2025",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NH",
+      "addressCountry": "US"
+    },
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "knowsAbout": ["3D scanning", "Laser 3D scanning", "Infrared 3D scanning", "Reverse engineering", "STL files", "PLY files"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "contact@3dscanpost.com",
+      "areaServed": "US",
+      "availableLanguage": "en"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "3D scanning services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Standard 3D scanning (2-3 day turnaround)",
+          "description": "Mail-in 3D scan of your part with STL and PLY files delivered. Laser scanning with ±0.2mm accuracy, or infrared scanning with full color texture.",
+          "priceSpecification": { "@type": "PriceSpecification", "minPrice": 45, "priceCurrency": "USD" },
+          "itemOffered": { "@type": "Service", "name": "Mail-in 3D scanning", "serviceType": "3D scanning" }
+        },
+        {
+          "@type": "Offer",
+          "name": "Express 3D scanning (24-hour turnaround)",
+          "description": "Priority 24-hour turnaround for a 30% premium over standard pricing.",
+          "itemOffered": { "@type": "Service", "name": "Express mail-in 3D scanning", "serviceType": "3D scanning" }
+        }
+      ]
+    }
+  }
+] -%}
+
+{%- if page.url == '/' -%}
+  {%- set faqEntities = [] -%}
+  {%- for faq in faqs -%}
+    {%- set faqEntities = (faqEntities.push({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+    }), faqEntities) -%}
+  {%- endfor -%}
+  {%- set businessGraph = (businessGraph.push({
+    "@type": "FAQPage",
+    "@id": site.url + "/#faq",
+    "mainEntity": faqEntities
+  }), businessGraph) -%}
+{%- else -%}
+  {%- set businessGraph = (businessGraph.push({
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+      { "@type": "ListItem", "position": 2, "name": breadcrumb or title, "item": pageUrl }
+    ]
+  }), businessGraph) -%}
+{%- endif -%}
+
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "3DScanPost",
-  "description": "Professional 3D scanning service for hobbyists and small businesses",
-  "url": "https://3dscanpost.com",
-  "logo": "https://3dscanpost.com/assets/images/logo.png",
-  "image": "https://3dscanpost.com/assets/images/og-image.jpg",
-  "addressRegion": "NH",
-  "addressCountry": "US",
-  "sameAs": [],
-  "priceRange": "$$",
-  "service": [
-    {
-      "@type": "Service",
-      "name": "3D Laser Scanning",
-      "description": "High-quality 3D scanning with ±0.2mm accuracy using professional-grade equipment",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "45",
-        "description": "Starting at $45 for simple parts"
-      }
-    }
-  ],
-  "areaServed": "US",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "Customer Service",
-    "availableLanguage": "en"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "3DScanPost",
-  "url": "https://3dscanpost.com",
-  "logo": "https://3dscanpost.com/assets/images/logo.png",
-  "description": "Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL and PLY scan files back.",
-  "foundingDate": "2025",
-  "areaServed": "US"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does the mail-in process work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Simply package your parts and mail them to us. We'll scan them and send back high-quality scan files within 2-3 business days."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What scan formats are available?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We provide scan data in STL and PLY formats, which are compatible with most 3D design and manufacturing software."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the scanning accuracy?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our laser scanning provides accuracy of ±0.2mm, suitable for detailed reverse engineering and design verification."
-      }
-    }
-  ]
-}
+{{ { "@context": "https://schema.org", "@graph": businessGraph } | dump | safe }}
 </script>

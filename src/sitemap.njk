@@ -1,19 +1,16 @@
 ---
 permalink: /sitemap.xml
 layout: null
+eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.indexable %}
   <url>
-    <loc>https://3dscanpost.com/</loc>
-    <lastmod>{{ buildTime | dateFilter }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>{{ site.url }}{{ item.url }}</loc>
+{%- if item.data.lastmod %}
+    <lastmod>{{ item.data.lastmod | dateFilter }}</lastmod>
+{%- endif %}
   </url>
-  <url>
-    <loc>https://3dscanpost.com/404</loc>
-    <lastmod>{{ buildTime | dateFilter }}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
+{%- endfor %}
 </urlset>

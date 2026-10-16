@@ -4,19 +4,24 @@
             <div class="flex-1 w-full">
                 <div class="card bg-base-200 shadow-2xl">
                     <div class="card-body p-2">
-                        <model-viewer
-                            src="/assets/scans/battery.glb"
-                            alt="3D scan example of a battery"
-                            auto-rotate
-                            camera-controls
-                            shadow-intensity="2"
-                            exposure="0.7"
-                            shadow-softness="0.8"
-                            environment-image="legacy"
-                            style="width: 100%; height: 500px; --poster-color: transparent;"
-                            camera-orbit="45deg 75deg 105%"
-                            interaction-prompt="auto"
-                        ></model-viewer>
+                        <div class="relative w-full h-[500px]">
+                            <img id="hero-poster" src="/assets/images/battery-poster.webp" width="830" height="1000" alt="" aria-hidden="true" fetchpriority="high" class="absolute inset-0 w-full h-full object-contain pointer-events-none">
+                            <model-viewer
+                                id="hero-model"
+                                src="/assets/scans/battery.glb"
+                                alt="3D scan example of a battery"
+                                auto-rotate
+                                camera-controls
+                                shadow-intensity="2"
+                                exposure="0.7"
+                                shadow-softness="0.8"
+                                environment-image="legacy"
+                                class="absolute inset-0"
+                                style="width: 100%; height: 100%; --poster-color: transparent;"
+                                camera-orbit="45deg 75deg 105%"
+                                interaction-prompt="auto"
+                            ></model-viewer>
+                        </div>
                     </div>
                 </div>
                 <div class="text-center mt-4">
@@ -59,3 +64,10 @@
     </div>
 
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <script>
+        // Remove the static poster once the live 3D model has rendered
+        document.getElementById('hero-model').addEventListener('load', function () {
+            var poster = document.getElementById('hero-poster');
+            if (poster) poster.remove();
+        });
+    </script>
