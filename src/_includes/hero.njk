@@ -5,6 +5,9 @@
                 <div class="card bg-base-200 shadow-2xl">
                     <div class="card-body p-2">
                         <div class="relative w-full h-[500px]">
+                            <button id="hero-activate" type="button" aria-label="Tap to explore in 3D (loads the interactive model)" class="absolute inset-0 z-10 flex items-end justify-center pb-4 cursor-pointer">
+                                <span class="badge badge-primary badge-lg">Tap to explore in 3D</span>
+                            </button>
                             <img id="hero-poster" src="/assets/images/battery-poster.webp" width="830" height="1000" alt="" aria-hidden="true" fetchpriority="high" class="absolute inset-0 w-full h-full object-contain pointer-events-none">
                             <model-viewer
                                 id="hero-model"
@@ -63,11 +66,33 @@
         </div>
     </div>
 
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <script>
-        // Remove the static poster once the live 3D model has rendered
-        document.getElementById('hero-model').addEventListener('load', function () {
-            var poster = document.getElementById('hero-poster');
-            if (poster) poster.remove();
-        });
+        // model-viewer (WebGL + Draco decoding) is heavy on the main thread, so only
+        // load it once the visitor engages. The poster image covers the wait.
+        (function () {
+            var model = document.getElementById('hero-model');
+            var started = false;
+            var events = ['pointerdown', 'touchstart', 'keydown', 'mousemove', 'scroll'];
+
+            function removePoster() {
+                ['hero-poster', 'hero-activate'].forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) el.remove();
+                });
+            }
+
+            function loadViewer() {
+                if (started) return;
+                started = true;
+                events.forEach(function (e) { window.removeEventListener(e, loadViewer); });
+                var s = document.createElement('script');
+                s.type = 'module';
+                s.src = 'https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js';
+                document.head.appendChild(s);
+            }
+
+            model.addEventListener('load', removePoster);
+            document.getElementById('hero-activate').addEventListener('click', loadViewer);
+            events.forEach(function (e) { window.addEventListener(e, loadViewer, { passive: true }); });
+        })();
     </script>

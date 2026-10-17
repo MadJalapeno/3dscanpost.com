@@ -13,6 +13,7 @@
   name: "dark";
   default: true;
   color-scheme: "dark";
+  --color-primary-content: #ffffff; /* white text on primary backgrounds: passes WCAG AA for small badge text */
 }
 
 html {
