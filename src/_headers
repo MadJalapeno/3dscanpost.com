@@ -27,3 +27,8 @@
 
 /*.json
   Cache-Control: public, max-age=3600
+
+/stl-align/stl_align.py
+  Content-Type: text/x-python; charset=utf-8
+  Content-Disposition: attachment; filename="stl_align.py"
+  Cache-Control: public, max-age=3600

@@ -18,18 +18,18 @@ module.exports = [
   },
   {
     q: "What if my part gets damaged in shipping?",
-    a: "We handle all parts with care, but shipping carries inherent risks. We strongly recommend you purchase shipping insurance for valuable or irreplaceable items. You are responsible for properly packaging your part and insuring shipments both ways."
+    a: "We handle all parts with care, but shipping carries inherent risks. We strongly recommend you purchase shipping insurance for valuable or irreplaceable items. You are responsible for properly packaging your part and insuring shipments both ways. Include a return shipping label in the package when you send your part."
   },
   {
     q: "Are the scan files ready to 3D print?",
     a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application."
   },
   {
-    q: "Do you ship internationally?",
-    a: "Currently we only accept shipments within the United States. International service may be added in the future."
+    q: "Do you accept parts from outside the US?",
+    a: "Yes, we scan parts from anywhere in the world. Include a return shipping label in the package as usual. International customers are responsible for shipping, insurance and any customs duties or taxes in both directions, and should pay by PayPal (Venmo is US-only)."
   },
   {
     q: "What payment methods do you accept?",
-    a: "We accept all major credit cards, Venmo and PayPal."
+    a: "We accept Venmo and PayPal. You pay after you've approved the scan screenshots."
   }
 ];

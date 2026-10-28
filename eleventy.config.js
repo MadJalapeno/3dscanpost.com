@@ -10,6 +10,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/assets/scans/");
   eleventyConfig.addPassthroughCopy("src/assets/images/");
+  eleventyConfig.addPassthroughCopy({ "src/downloads/stl_align.py": "stl-align/stl_align.py" });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/manifest.webmanifest");
   eleventyConfig.addPassthroughCopy("src/_headers");

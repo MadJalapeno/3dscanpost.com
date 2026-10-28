@@ -27,6 +27,6 @@ Scans are provided on a best-effort basis. Check the scan and any recreated mode
 
 ## How to start
 
-Email photos of the part from several angles with approximate dimensions and material, and mention that you're interested in CAD conversion. We'll recommend the right scan type and send a quote. The [process](/#how-it-works) is: photos, deposit, ship, scan, approve, receive files.
+Email photos of the part from several angles with approximate dimensions and material, and mention that you're interested in CAD conversion. We'll recommend the right scan type and send a quote. The [process](/#how-it-works) is: photos and quote, ship with a return label, scan, approve and pay, receive files and your part.
 
 Related: [3D scanning for 3D printing](/3d-scanning-for-3d-printing/) and [3D scanning in New Hampshire](/3d-scanning-new-hampshire/).
