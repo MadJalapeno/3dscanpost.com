@@ -21,6 +21,11 @@ module.exports = [
     a: "We handle all parts with care, but shipping carries inherent risks. We strongly recommend you purchase shipping insurance for valuable or irreplaceable items. You are responsible for properly packaging your part and insuring shipments both ways. Include a return shipping label in the package when you send your part."
   },
   {
+    q: "Do I need a 3D scan for a flat part?",
+    a: "Not always. For gaskets, brackets and other mostly flat parts, you can often trace an outline from a photo with a free-to-try tool like ShapeScan, which exports SVG, DXF and simple extruded STL files to about ±1mm. A 3D scan is the better choice when the part has real depth, curves or fine detail, or when you need tighter accuracy (our laser mode is ±0.2mm).",
+    link: { href: "https://shapescan.pt/", text: "Visit ShapeScan" }
+  },
+  {
     q: "Are the scan files ready to 3D print?",
     a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application."
   },
