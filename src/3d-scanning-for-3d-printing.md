@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-title: "3D Scanning for 3D Printing | STL Files from Real Parts | 3DScanPost"
+title: "3D Scanning for 3D Printing | Real Parts to STL | 3DScanPost"
 breadcrumb: "3D Scanning for 3D Printing"
 description: "Turn a real object into a printable STL. Mail your part, we 3D scan it with laser or color infrared scanning and send back STL and PLY files. From $55."
 permalink: /3d-scanning-for-3d-printing/
