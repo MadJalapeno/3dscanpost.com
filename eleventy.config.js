@@ -10,6 +10,17 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/assets/scans/");
   eleventyConfig.addPassthroughCopy("src/assets/images/");
+  eleventyConfig.addPassthroughCopy("src/assets/js/");
+  eleventyConfig.addPassthroughCopy("src/assets/fonts/");
+  // three.js for the Examples page, self-hosted so ad/tracker blockers can't break it
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/three/build/three.module.min.js": "assets/vendor/three-0.160.0/build/three.module.min.js",
+    "node_modules/three/examples/jsm/loaders/GLTFLoader.js": "assets/vendor/three-0.160.0/examples/jsm/loaders/GLTFLoader.js",
+    "node_modules/three/examples/jsm/loaders/DRACOLoader.js": "assets/vendor/three-0.160.0/examples/jsm/loaders/DRACOLoader.js",
+    "node_modules/three/examples/jsm/controls/OrbitControls.js": "assets/vendor/three-0.160.0/examples/jsm/controls/OrbitControls.js",
+    "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js": "assets/vendor/three-0.160.0/examples/jsm/utils/BufferGeometryUtils.js",
+    "node_modules/three/examples/jsm/libs/draco/gltf": "assets/vendor/three-0.160.0/examples/jsm/libs/draco/gltf",
+  });
   eleventyConfig.addPassthroughCopy({ "src/downloads/stl_align.py": "stl-align/stl_align.py" });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/manifest.webmanifest");

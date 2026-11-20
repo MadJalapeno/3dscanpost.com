@@ -1,10 +1,25 @@
 {%- set pageDescription = description or site.description -%}
 {%- set pageUrl = site.url + (page.url if page.url != '/' else '/') -%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth scroll-pt-20">
 <head>
+    <!--
+    debugging info
+    =============================
+      site.name:    {{ site.name }}
+      site.url:     {{ site.url }}
+      title:        {{ title }}
+      build:        {{ buildInfo.hash }}
+      built:        {{ buildInfo.date }}
+      commit date:  {{ buildInfo.commitDate }}
+    ==============================
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- if threeImportMap %}
+    <!-- Import maps only apply if they precede every module script, including the dev server's reload client -->
+    <script type="importmap">{"imports":{"three":"/assets/vendor/three-0.160.0/build/three.module.min.js"}}</script>
+{%- endif %}
     <title>{{ title }}</title>
     <meta name="description" content="{{ pageDescription }}">
     <meta name="author" content="{{ site.name }}">
@@ -36,14 +51,26 @@
     <meta name="twitter:image" content="{{ site.ogImage }}">
 
     <!-- Favicon and Manifest -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
-    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg?v={% version %}">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v={% version %}">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#1f2937">
+    <meta name="theme-color" content="#0c1812">
+    <script>
+        // Set the theme before first paint to avoid a flash: saved choice, else the OS preference
+        (function () {
+            var t;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') {
+                t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
 
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://stats.jala.dev">
 
+    <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/tailwind.css?v={% version %}" />
 
 {% if not noindex %}

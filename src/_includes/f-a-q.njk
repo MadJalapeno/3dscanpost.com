@@ -1,9 +1,9 @@
     <!-- FAQ -->
-    <section id="faq" class="container mx-auto px-6 py-20">
-        <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-        <div class="max-w-3xl mx-auto space-y-4">
+    <section id="faq" class="mx-auto max-w-6xl px-6 py-20">
+        <h2 class="font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-[''] mb-12">Frequently Asked Questions</h2>
+        <div class="max-w-3xl space-y-4">
 {% for faq in faqs %}
-            <div class="collapse collapse-plus bg-base-200">
+            <div class="collapse collapse-plus border border-base-300 bg-base-100">
                 <input type="radio" name="faq-accordion" aria-label="{{ faq.q }}" />
                 <div class="collapse-title text-xl font-medium">{{ faq.q }}</div>
                 <div class="collapse-content">

@@ -1,12 +1,20 @@
     <!-- Hero Section -->
-    <div class="hero min-h-screen bg-base-100">
-        <div class="hero-content flex-col lg:flex-row-reverse gap-12 max-w-7xl">
+    <div class="hero relative isolate overflow-hidden py-12 lg:py-20 bg-base-100">
+        <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(color-mix(in_oklab,var(--color-base-content)_22%,transparent)_1px,transparent_1px)] bg-size-[24px_24px] [mask-image:radial-gradient(ellipse_at_60%_40%,#000_20%,transparent_75%)]" aria-hidden="true"></div>
+        <div class="hero-content w-full flex-col lg:flex-row-reverse gap-12 max-w-6xl px-6">
             <div class="flex-1 w-full">
-                <div class="card bg-base-200 shadow-2xl">
+                <div class="card card-border relative bg-base-100">
+                    <span class="pointer-events-none absolute -left-px -top-px h-5 w-5 border-l-2 border-t-2 border-primary" aria-hidden="true"></span>
+                    <span class="pointer-events-none absolute -right-px -top-px h-5 w-5 border-r-2 border-t-2 border-primary" aria-hidden="true"></span>
+                    <span class="pointer-events-none absolute -bottom-px -left-px h-5 w-5 border-b-2 border-l-2 border-primary" aria-hidden="true"></span>
+                    <span class="pointer-events-none absolute -bottom-px -right-px h-5 w-5 border-b-2 border-r-2 border-primary" aria-hidden="true"></span>
                     <div class="card-body p-2">
                         <div class="relative w-full h-[500px]">
+                            <span class="pointer-events-none absolute inset-x-0 bottom-0 h-2 bg-[repeating-linear-gradient(90deg,var(--color-base-content)_0_1px,transparent_1px_10px)] opacity-30" aria-hidden="true"></span>
+                            <span class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-[repeating-linear-gradient(0deg,var(--color-base-content)_0_1px,transparent_1px_10px)] opacity-30" aria-hidden="true"></span>
+                            <div class="pointer-events-none absolute left-3 top-3 z-20 rounded-field border border-base-content/15 bg-base-100 px-2 py-1 font-mono text-[0.7rem] uppercase tracking-wider text-primary" aria-hidden="true">133.3 × 126.3 × 99.4 mm · 154,949 tris</div>
                             <button id="hero-activate" type="button" aria-label="Tap to explore in 3D (loads the interactive model)" class="absolute inset-0 z-10 flex items-end justify-center pb-4 cursor-pointer">
-                                <span class="badge badge-primary badge-lg">Tap to explore in 3D</span>
+                                <span class="badge badge-neutral badge-lg font-mono uppercase tracking-wider">Tap to explore in 3D</span>
                             </button>
                             <img id="hero-poster" src="/assets/images/battery-poster.webp" width="830" height="1000" alt="" aria-hidden="true" fetchpriority="high" class="absolute inset-0 w-full h-full object-contain pointer-events-none">
                             <model-viewer
@@ -28,7 +36,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <div class="badge badge-primary badge-lg gap-2">
+                    <div class="badge badge-ghost badge-lg gap-2 h-auto py-1.5 font-mono text-xs uppercase tracking-wider sm:text-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                         </svg>
@@ -36,29 +44,32 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-1 text-center lg:text-left">
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight">3D Scanning by Mail</h1>
+            <div class="flex-1 text-left">
+                <h1 class="font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+                    <span class="block text-primary"><span class="inline-block transition-[opacity,translate] duration-500 ease-out motion-safe:starting:translate-y-4 motion-safe:starting:opacity-0">3D</span> <span class="inline-block transition-[opacity,translate] duration-500 ease-out motion-safe:starting:translate-y-4 motion-safe:starting:opacity-0 delay-100">Scanning</span></span>
+                    <span class="block"><span class="inline-block transition-[opacity,translate] duration-500 ease-out motion-safe:starting:translate-y-4 motion-safe:starting:opacity-0 delay-200">by</span> <span class="inline-block transition-[opacity,translate] duration-500 ease-out motion-safe:starting:translate-y-4 motion-safe:starting:opacity-0 delay-300">Mail</span></span>
+                </h1>
                 <p class="py-6 text-xl opacity-80">Ship it. We scan it. Download your files.</p>
                 
-                <div class="stats stats-vertical lg:stats-horizontal shadow mb-6">
+                <div class="stats stats-vertical lg:stats-horizontal mb-6 border border-base-content/10 bg-base-100">
                     <div class="stat">
-                        <div class="stat-title">Accuracy</div>
-                        <div class="stat-value text-primary text-2xl">±0.2mm</div>
-                        <div class="stat-desc">Laser scanning</div>
+                        <div class="stat-title font-mono uppercase tracking-wider">Accuracy</div>
+                        <div class="stat-value font-mono text-primary text-2xl">±0.2mm</div>
+                        <div class="stat-desc font-mono">Laser scanning</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-title">Turnaround</div>
-                        <div class="stat-value text-secondary text-2xl">2-3 days</div>
-                        <div class="stat-desc">24hr available</div>
+                        <div class="stat-title font-mono uppercase tracking-wider">Turnaround</div>
+                        <div class="stat-value font-mono text-primary text-2xl">2-3 days</div>
+                        <div class="stat-desc font-mono">24hr available</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-title">Starting at</div>
-                        <div class="stat-value text-accent text-2xl">$55</div>
-                        <div class="stat-desc">Simple parts</div>
+                        <div class="stat-title font-mono uppercase tracking-wider">Starting at</div>
+                        <div class="stat-value font-mono text-primary text-2xl">$55</div>
+                        <div class="stat-desc font-mono">Simple parts</div>
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <div class="flex flex-col sm:flex-row gap-4 justify-start">
                     <a href="#contact" class="btn btn-primary btn-lg">Get Started</a>
                     <a href="#scan-types" class="btn btn-outline btn-lg">View Scan Options</a>
                 </div>

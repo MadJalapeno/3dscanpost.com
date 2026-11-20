@@ -1,51 +1,54 @@
     <!-- How It Works -->
-    <section id="how-it-works" class="container mx-auto px-6 py-20">
-        <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
-        <div class="max-w-3xl mx-auto">
-            <ul class="steps steps-vertical lg:steps-horizontal w-full mb-12">
-                <li class="step step-primary">Send Photos</li>
-                <li class="step step-primary">Ship Your Part</li>
-                <li class="step step-primary">We Scan</li>
-                <li class="step step-primary">Approve &amp; Pay</li>
-                <li class="step step-primary">Receive Files &amp; Part</li>
-            </ul>
-
-            <div class="space-y-4">
-                <div class="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="process-accordion" aria-label="1. Send Photos" checked="checked" />
-                    <div class="collapse-title text-xl font-medium">1. Send Photos</div>
-                    <div class="collapse-content">
-                        <p>Send photos of your part from several angles, plus a short description: approximate dimensions, material and what you want to do with the scan. We'll check it's scannable and send you a quote.</p>
-                    </div>
-                </div>
-                <div class="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="process-accordion" aria-label="2. Ship Your Part" />
-                    <div class="collapse-title text-xl font-medium">2. Ship Your Part</div>
-                    <div class="collapse-content">
-                        <p>If you're happy with the quote, send us your part with a return shipping label included in the package, so we can ship it back to you. Package it carefully, and we recommend insurance and tracking for valuable items.</p>
-                    </div>
-                </div>
-                <div class="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="process-accordion" aria-label="3. We Scan" />
-                    <div class="collapse-title text-xl font-medium">3. We Scan</div>
-                    <div class="collapse-content">
-                        <p>We scan your part within your turnaround window and email you screenshots of the scan for approval.</p>
-                    </div>
-                </div>
-                <div class="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="process-accordion" aria-label="4. Approve &amp; Pay" />
-                    <div class="collapse-title text-xl font-medium">4. Approve &amp; Pay</div>
-                    <div class="collapse-content">
-                        <p>Happy with the screenshots? Pay by Venmo or PayPal. You don't pay anything until you've seen the scan.</p>
-                    </div>
-                </div>
-                <div class="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="process-accordion" aria-label="5. Receive Files &amp; Part" />
-                    <div class="collapse-title text-xl font-medium">5. Receive Files &amp; Part</div>
-                    <div class="collapse-content">
-                        <p>We send you the scan files (STL and PLY formats), then ship your original part back using your label.</p>
-                    </div>
-                </div>
+    <section id="how-it-works" class="mx-auto max-w-6xl px-6 py-20">
+        <div class="grid gap-10 lg:grid-cols-[1fr_2fr]">
+            <div class="self-start lg:sticky lg:top-24">
+                <h2 class="font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">How It Works</h2>
+                <p class="mt-6 max-w-sm opacity-70">Five steps from photos to files. You don't pay anything until you've seen the scan.</p>
             </div>
+            <ol class="timeline timeline-vertical timeline-snap-icon timeline-compact">
+                <li>
+                    <div class="timeline-middle"><span class="grid size-9 place-items-center rounded-full border border-primary bg-base-100 font-mono text-xs font-semibold tabular-nums text-primary" aria-hidden="true">01</span></div>
+                    <div class="timeline-end mb-8 ml-2">
+                        <h3 class="font-display text-xl font-semibold">Send Photos</h3>
+                        <p class="mt-2 max-w-xl opacity-80">Send photos of your part from several angles, plus a short description: approximate dimensions, material and what you want to do with the scan. We'll check it's scannable and send you a quote.</p>
+                    </div>
+                    <hr />
+                </li>
+                <li>
+                    <hr />
+                    <div class="timeline-middle"><span class="grid size-9 place-items-center rounded-full border border-primary bg-base-100 font-mono text-xs font-semibold tabular-nums text-primary" aria-hidden="true">02</span></div>
+                    <div class="timeline-end mb-8 ml-2">
+                        <h3 class="font-display text-xl font-semibold">Ship Your Part</h3>
+                        <p class="mt-2 max-w-xl opacity-80">If you're happy with the quote, send us your part with a return shipping label included in the package, so we can ship it back to you. Package it carefully, and we recommend insurance and tracking for valuable items.</p>
+                    </div>
+                    <hr />
+                </li>
+                <li>
+                    <hr />
+                    <div class="timeline-middle"><span class="grid size-9 place-items-center rounded-full border border-primary bg-base-100 font-mono text-xs font-semibold tabular-nums text-primary" aria-hidden="true">03</span></div>
+                    <div class="timeline-end mb-8 ml-2">
+                        <h3 class="font-display text-xl font-semibold">We Scan</h3>
+                        <p class="mt-2 max-w-xl opacity-80">We scan your part within your turnaround window and email you screenshots of the scan for approval.</p>
+                    </div>
+                    <hr />
+                </li>
+                <li>
+                    <hr />
+                    <div class="timeline-middle"><span class="grid size-9 place-items-center rounded-full border border-primary bg-base-100 font-mono text-xs font-semibold tabular-nums text-primary" aria-hidden="true">04</span></div>
+                    <div class="timeline-end mb-8 ml-2">
+                        <h3 class="font-display text-xl font-semibold">Approve &amp; Pay</h3>
+                        <p class="mt-2 max-w-xl opacity-80">Happy with the screenshots? Pay by Venmo or PayPal. You don't pay anything until you've seen the scan.</p>
+                    </div>
+                    <hr />
+                </li>
+                <li>
+                    <hr />
+                    <div class="timeline-middle"><span class="grid size-9 place-items-center rounded-full border border-primary bg-base-100 font-mono text-xs font-semibold tabular-nums text-primary" aria-hidden="true">05</span></div>
+                    <div class="timeline-end mb-8 ml-2">
+                        <h3 class="font-display text-xl font-semibold">Receive Files &amp; Part</h3>
+                        <p class="mt-2 max-w-xl opacity-80">We send you the scan files (STL and PLY formats), then ship your original part back using your label.</p>
+                    </div>
+                </li>
+            </ol>
         </div>
     </section>

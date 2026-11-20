@@ -1,24 +1,84 @@
     <!-- Footer -->
-    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
-        <aside>
-            <p class="font-bold text-lg">3DScanPost</p>
-            <p>Professional 3D scanning service for hobbyists and small businesses</p>
-            <p class="opacity-70">NH based, serving customers worldwide by mail. Scan data provided in STL and PLY formats.</p>
-        </aside>
-        <nav aria-label="Footer" class="grid grid-flow-col gap-4">
-            <a class="link link-hover" href="/3d-scanning-new-hampshire/">3D Scanning in New Hampshire</a>
-            <a class="link link-hover" href="/3d-scanning-for-3d-printing/">3D Scanning for 3D Printing</a>
-            <a class="link link-hover" href="/reverse-engineering-3d-scanning/">Reverse Engineering</a>
-            <a class="link link-hover" href="/#pricing">Pricing</a>
-            <a class="link link-hover" href="/#faq">FAQ</a>
-        </nav>
-        <nav>
-            <p>&copy; 2026 3DScanPost. All rights reserved.</p>
-            <p>Part of <a href="https://jalapeno.design">Jalapeno Design</a></p>
-        </nav>
+    <footer class="border-t border-base-content/10 bg-base-200">
+        <div class="max-w-6xl mx-auto px-6 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="lg:col-span-1">
+                <a href="/" class="inline-flex items-center gap-2 font-display text-lg font-bold tracking-tight mb-3" aria-label="3DScanPost home">
+                    <svg class="h-7 w-7 text-primary" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M32 8 53 20v24L32 56 11 44V20z"/><path d="M11 20l21 12 21-12M32 32v24"/></svg>
+                    <span>3DScanPost</span>
+                </a>
+                <p class="text-sm opacity-80">Professional 3D scanning service for hobbyists and small businesses.</p>
+                <p class="text-sm opacity-60 mt-2">NH based, serving customers worldwide by mail. Scan data provided in STL and PLY formats.</p>
+            </div>
+            <nav aria-label="Services">
+                <h2 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">Services</h2>
+                <ul class="grid gap-2 text-sm">
+                    <li><a class="link link-hover" href="/3d-scanning-new-hampshire/">3D Scanning in New Hampshire</a></li>
+                    <li><a class="link link-hover" href="/3d-scanning-for-3d-printing/">3D Scanning for 3D Printing</a></li>
+                    <li><a class="link link-hover" href="/reverse-engineering-3d-scanning/">Reverse Engineering</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Explore">
+                <h2 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">Explore</h2>
+                <ul class="grid gap-2 text-sm">
+                    <li><a class="link link-hover" href="/#how-it-works">How It Works</a></li>
+                    <li><a class="link link-hover" href="/examples/">Examples</a></li>
+                    <li><a class="link link-hover" href="/3d-mesh-tools/">3D Mesh Tools</a></li>
+                    <li><a class="link link-hover" href="/#pricing">Pricing</a></li>
+                    <li><a class="link link-hover" href="/#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div>
+                <h2 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">Get a quote</h2>
+                <p class="text-sm opacity-80 mb-4">Email a few photos of your part and we'll reply within 24 hours.</p>
+                <a href="/#contact" class="btn btn-primary btn-sm">Contact</a>
+            </div>
+        </div>
+        <div class="border-t border-base-content/10">
+            <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row gap-2 justify-between text-sm opacity-70">
+                <p>&copy; 2026 3DScanPost. All rights reserved.</p>
+                <p class="inline-flex items-center gap-2">Part of <a class="link link-hover inline-flex items-center gap-1.5" href="https://jalapeno.design"><img src="/assets/images/jalapeno-logo.svg" alt="" width="20" height="20" class="h-5 w-5 object-contain">Jalapeno Design</a></p>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Light/dark toggle
+        (function () {
+            var btn = document.getElementById('theme-toggle');
+            var root = document.documentElement;
+            function sync() {
+                var dark = root.getAttribute('data-theme') === 'dark';
+                btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                btn.querySelector('.theme-icon-sun').style.display = dark ? '' : 'none';
+                btn.querySelector('.theme-icon-moon').style.display = dark ? 'none' : '';
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', dark ? '#0c1812' : '#fbfdf9');
+            }
+            btn.addEventListener('click', function () {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                try { localStorage.setItem('theme', next); } catch (e) {}
+                sync();
+            });
+            sync();
+        })();
+
+        // Close the nav's <details> dropdowns on outside click, Escape, or choosing a link
+        (function () {
+            var menus = document.querySelectorAll('header details');
+            function closeAll(except) {
+                menus.forEach(function (d) { if (d !== except) d.removeAttribute('open'); });
+            }
+            document.addEventListener('click', function (e) {
+                var inside = e.target.closest('header details');
+                closeAll(inside);
+                if (inside && e.target.closest('details ul a')) inside.removeAttribute('open');
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeAll(null);
+            });
+        })();
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

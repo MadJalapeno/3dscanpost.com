@@ -1,22 +1,87 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography"; /* https://github.com/tailwindlabs/tailwindcss-typography */
 
-@plugin "daisyui"{}
-
-@theme {
-  --color-primary: #3b82f6;
-  --color-secondary: #8b5cf6;
-  --color-accent: #10b981;
+@plugin "daisyui" {
+  themes: false;
 }
 
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Palette from the Jalapeno logo: forest #1d3d30, jalapeno #91c679, leaf #5a923e, mint #c9e3bc */
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
+  prefersdark: true;
   color-scheme: "dark";
-  --color-primary-content: #ffffff; /* white text on primary backgrounds: passes WCAG AA for small badge text */
+  --color-base-100: #0c1812;
+  --color-base-200: #13241b;
+  --color-base-300: #08110c;
+  --color-base-content: #e6f1e8;
+  --color-primary: #91c679;
+  --color-primary-content: #0c1812; /* dark text on jalapeno green: passes WCAG AA */
+  --color-secondary: #c9e3bc;
+  --color-secondary-content: #0c1812;
+  --color-accent: #5eead4;
+  --color-accent-content: #04201c;
+  --color-neutral: #1d3d30;
+  --color-neutral-content: #e6f1e8;
+  --color-info: #8fd9c6;
+  --color-info-content: #06201a;
+  --color-success: #91c679;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --radius-box: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-selector: 0.375rem;
+  --color-success-content: #0c1812;
+  --color-warning-content: #231600;
+  --color-error-content: #2a0707;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --depth: 0;
+  --noise: 0;
+  --border: 1px;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* clear the sticky navbar for /#section links */
+@plugin "daisyui/theme" {
+  name: "light";
+  color-scheme: "light";
+  --color-base-100: #ffffff;
+  --color-base-200: #f4f6f4;
+  --color-base-300: #e2e7e2;
+  --color-base-content: #16301f;
+  --color-primary: #3f7a2b;
+  --color-primary-content: #ffffff;
+  --color-secondary: #1d3d30;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0f766e;
+  --color-accent-content: #ffffff;
+  --color-neutral: #1d3d30;
+  --color-neutral-content: #e6f1e8;
+  --color-info: #0f766e;
+  --color-info-content: #ffffff;
+  --color-success: #3f7a2b;
+  --color-warning: #b45309;
+  --color-error: #b91c1c;
+  --radius-box: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-selector: 0.375rem;
+  --color-success-content: #ffffff;
+  --color-warning-content: #ffffff;
+  --color-error-content: #ffffff;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --depth: 0;
+  --noise: 0;
+  --border: 1px;
 }
