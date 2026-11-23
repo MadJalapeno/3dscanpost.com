@@ -2,7 +2,7 @@
 module.exports = [
   {
     q: "What size parts can you scan?",
-    a: "We can handle parts from small components (100mm x 100mm x 100mm) up to approximately half the size of a car. If you're unsure whether your part is too large, send us photos and we'll let you know."
+    a: "We can handle parts from small components (50mm x 50mm x 50mm) up to the size of a car. If you're unsure whether your part is too large, send us photos and we'll let you know."
   },
   {
     q: "What materials work best?",
@@ -10,11 +10,11 @@ module.exports = [
   },
   {
     q: "What if I can't ship it?",
-    a: "We can arrange that you come to our facility (Seacoast, NH), or we can travel to you (travel time max 1hr)."
+    a: "We can arrange that you come to our facility (Seacoast, NH), or we can travel to you (travel time max 1hr and charged at IRS Standard mileage rate)."
   },
   {
     q: "Do you offer CAD conversion or reverse engineering?",
-    a: "CAD conversion requires understanding design intent, which varies by application - without knowing that the best we can do is recreate your part in Solidworks and give you a STEP file suitable for manufacturing. Price will depend on part geometry and will be discussed before work starts."
+    a: "We can recreate your part in Solidworks and give you a STEP file suitable for manufacturing, but without knowing the full design intent the part is an approximation of the original. Price will depend on part geometry and will be discussed before work starts."
   },
   {
     q: "What if my part gets damaged in shipping?",
@@ -27,11 +27,11 @@ module.exports = [
   },
   {
     q: "Are the scan files ready to 3D print?",
-    a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application."
+    a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. We try to create a watertight mesh file, but deep holes and hidden details are hard to scan. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application."
   },
   {
     q: "Do you accept parts from outside the US?",
-    a: "Yes, we scan parts from anywhere in the world. Include a return shipping label in the package as usual. International customers are responsible for shipping, insurance and any customs duties or taxes in both directions, and should pay by PayPal (Venmo is US-only)."
+    a: "Yes, we scan parts from anywhere in the world. Include a return shipping label in the package as usual. International customers are responsible for shipping, insurance and any customs duties or taxes in both directions, and should pay by PayPal (Venmo is US-only). We can also dispose of items if you don't want it back."
   },
   {
     q: "What payment methods do you accept?",
