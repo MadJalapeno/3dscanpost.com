@@ -1,9 +1,8 @@
 // Quote form handler for 3dscanpost.com.
-// POST /api/quote            multipart form -> Turnstile, validation, R2, notification email, confirmation
+// POST /api/quote            multipart form -> Turnstile, validation, R2, notification + confirmation via Resend
 // GET  /api/quote/files/...  signed, expiring links to the stored photos (the bucket stays private)
 
-import { EmailMessage } from "cloudflare:email";
-import { LIMITS, sniffImage, declaredTypeOk, cleanText, validEmail, sign, verify, buildMime } from "./lib.js";
+import { LIMITS, sniffImage, declaredTypeOk, cleanText, validEmail, sign, verify } from "./lib.js";
 
 const LINK_TTL_SECONDS = 30 * 24 * 3600;
 const FILE_KEY = /^\d{8}-[0-9a-f-]{36}\/\d+\.(jpg|png|webp|heic)$/;
@@ -131,15 +130,13 @@ async function submit(request, env, ctx) {
   ].join("\n");
 
   try {
-    const raw = buildMime({
+    await sendEmail(env, {
       from: env.NOTIFY_FROM,
-      to: env.NOTIFY_TO,
-      replyTo: email,
+      to: [env.NOTIFY_TO],
+      reply_to: email,
       subject: `New quote request ${id.slice(9, 17)}`,
       text,
-      domain: new URL(env.PUBLIC_BASE).hostname,
     });
-    await env.NOTIFY.send(new EmailMessage(env.NOTIFY_FROM, env.NOTIFY_TO, raw));
   } catch (err) {
     console.error("Notification email failed", id, err);
     return fail(500, "Something went wrong sending your request. Please email us instead.");
@@ -171,21 +168,30 @@ async function turnstileOk(token, ip, env) {
 // The text is fixed. Only the recipient address comes from the submitter.
 async function sendConfirmation(to, env) {
   try {
-    const r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: env.CONFIRM_FROM,
-        to: [to],
-        reply_to: env.REPLY_TO,
-        subject: "We received your 3D scanning request",
-        text: "Thanks for your request. We have received it and will reply with a quote, usually within 24 hours.\n\n3DScanPost\nhttps://3dscanpost.com",
-      }),
+    await sendEmail(env, {
+      from: env.CONFIRM_FROM,
+      to: [to],
+      reply_to: env.REPLY_TO,
+      subject: "We received your 3D scanning request",
+      text: "Thanks for your request. We have received it and will reply with a quote, usually within 24 hours.\n\n3DScanPost\nhttps://3dscanpost.com",
     });
-    if (!r.ok) console.error("Resend rejected the confirmation", r.status, await r.text());
   } catch (err) {
     console.error("Confirmation email failed", err);
   }
+}
+
+// One place that talks to Resend. In local dev (DEV_LOG_EMAILS=true) it prints the email instead.
+async function sendEmail(env, message) {
+  if (env.DEV_LOG_EMAILS === "true") {
+    console.log("[dev] email not sent:\n" + JSON.stringify(message, null, 2));
+    return;
+  }
+  const r = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify(message),
+  });
+  if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
 }
 
 // ---------- signed photo links ----------

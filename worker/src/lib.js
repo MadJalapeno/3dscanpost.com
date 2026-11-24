@@ -58,27 +58,3 @@ export async function verify(secret, data, sigHex) {
   if (!sig) return false;
   return crypto.subtle.verify("HMAC", await hmacKey(secret, ["verify"]), sig, enc.encode(data));
 }
-
-function base64Utf8(text) {
-  const bytes = enc.encode(text);
-  let bin = "";
-  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-  return btoa(bin).replace(/.{1,76}/g, "$&\r\n").trimEnd();
-}
-
-// Raw MIME for Cloudflare's send_email binding. Headers are fixed ASCII; only the validated
-// reply-to address comes from the user, and validEmail() rules out CR/LF.
-export function buildMime({ from, to, replyTo, subject, text, domain }) {
-  const headers = [
-    `From: ${from}`,
-    `To: ${to}`,
-    replyTo ? `Reply-To: ${replyTo}` : null,
-    `Subject: ${subject}`,
-    `Date: ${new Date().toUTCString()}`,
-    `Message-ID: <${crypto.randomUUID()}@${domain}>`,
-    "MIME-Version: 1.0",
-    "Content-Type: text/plain; charset=utf-8",
-    "Content-Transfer-Encoding: base64",
-  ].filter(Boolean);
-  return headers.join("\r\n") + "\r\n\r\n" + base64Utf8(text) + "\r\n";
-}

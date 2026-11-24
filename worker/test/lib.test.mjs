@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { sniffImage, declaredTypeOk, cleanText, validEmail, sign, verify, buildMime } from "../src/lib.js";
+import { sniffImage, declaredTypeOk, cleanText, validEmail, sign, verify } from "../src/lib.js";
 
 const b = (...x) => Uint8Array.from(x);
 const str = (s) => [...s].map((c) => c.charCodeAt(0));
@@ -35,13 +35,5 @@ assert.ok(!(await verify("secret", "20261123-x/2.jpg.1800000000", sig)));
 assert.ok(!(await verify("other", "20261123-x/1.jpg.1800000000", sig)));
 assert.ok(!(await verify("secret", "x", "zz")));
 assert.ok(!(await verify("secret", "x", undefined)));
-
-// MIME output
-const raw = buildMime({ from: "q@d.com", to: "me@d.com", replyTo: "c@d.com", subject: "S", text: "héllo ✓\nline2", domain: "d.com" });
-const [head, body] = raw.split("\r\n\r\n");
-assert.match(head, /^From: q@d\.com\r\nTo: me@d\.com\r\nReply-To: c@d\.com\r\nSubject: S\r\n/);
-assert.match(head, /Content-Transfer-Encoding: base64/);
-assert.equal(Buffer.from(body.replace(/\s/g, ""), "base64").toString("utf8"), "héllo ✓\nline2");
-assert.ok(body.split("\r\n").every((l) => l.length <= 76));
 
 console.log("lib tests passed");

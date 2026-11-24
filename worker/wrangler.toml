@@ -7,9 +7,9 @@ routes = [{ pattern = "3dscanpost.com/api/quote*", zone_name = "3dscanpost.com" 
 
 [vars]
 PUBLIC_BASE = "https://3dscanpost.com"
-NOTIFY_FROM = "quotes@3dscanpost.com"       # must be an address on a domain with Email Routing enabled
-NOTIFY_TO = "CHANGE-ME@example.com"          # must be a verified destination address in Email Routing
-CONFIRM_FROM = "3DScanPost <noreply@send.3dscanpost.com>"  # Resend sending domain, see SETUP.md
+NOTIFY_FROM = "3DScanPost Quotes <quotes@send.3dscanpost.com>"   # Resend sending domain (see SETUP.md)
+NOTIFY_TO = "contact@3dscanpost.com"                              # where new quote requests are emailed
+CONFIRM_FROM = "3DScanPost <noreply@send.3dscanpost.com>"         # confirmation to the customer
 REPLY_TO = "contact@3dscanpost.com"
 TURNSTILE_CHECK_HOSTNAME = "true"           # set "false" only in .dev.vars for local testing
 
@@ -17,11 +17,6 @@ TURNSTILE_CHECK_HOSTNAME = "true"           # set "false" only in .dev.vars for 
 [[r2_buckets]]
 binding = "PHOTOS"
 bucket_name = "3dscanpost-quote-photos"
-
-# Cloudflare Email Routing: sends the notification to NOTIFY_TO only.
-[[send_email]]
-name = "NOTIFY"
-destination_address = "CHANGE-ME@example.com"   # same as NOTIFY_TO
 
 # Basic per-IP rate limit: 4 submissions per 60 seconds per IP, per Cloudflare location.
 [[ratelimits]]
@@ -31,5 +26,5 @@ simple = { limit = 4, period = 60 }
 
 # Secrets (set with `wrangler secret put`, never in this file):
 #   TURNSTILE_SECRET   Turnstile widget secret key
-#   RESEND_API_KEY     Resend API key (sending access only)
+#   RESEND_API_KEY     Resend API key (sending access only), used for both emails
 #   LINK_SECRET        long random string used to sign photo links
