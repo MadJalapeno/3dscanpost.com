@@ -67,8 +67,10 @@
         })();
     </script>
 
-    <!-- Preconnect to external resources -->
+    {% if env.environment != "dev" %}
+    <!-- Preconnect to external resources -->      
     <link rel="preconnect" href="https://stats.jala.dev">
+    {% endif %}
 
     <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/tailwind.css?v={% version %}" />

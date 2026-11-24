@@ -10,11 +10,13 @@ module.exports = [
   },
   {
     q: "What if I can't ship it?",
-    a: "We can arrange that you come to our facility (Seacoast, NH), or we can travel to you (travel time max 1hr and charged at IRS Standard mileage rate)."
+    a: "We can arrange that you come to our facility (Seacoast, NH), or we can travel to you (travel time max 1hr and charged at IRS Standard mileage rate).",
+    link: { href: "/3d-scanning-new-hampshire/", text: "3D scanning in New Hampshire" }
   },
   {
     q: "Do you offer CAD conversion or reverse engineering?",
-    a: "We can recreate your part in Solidworks and give you a STEP file suitable for manufacturing, but without knowing the full design intent the part is an approximation of the original. Price will depend on part geometry and will be discussed before work starts."
+    a: "We can recreate your part in Solidworks and give you a STEP file suitable for manufacturing, but without knowing the full design intent the part is an approximation of the original. Price will depend on part geometry and will be discussed before work starts.",
+    link: { href: "/reverse-engineering-3d-scanning/", text: "Reverse engineering with 3D scanning" }
   },
   {
     q: "What if my part gets damaged in shipping?",
@@ -27,7 +29,8 @@ module.exports = [
   },
   {
     q: "Are the scan files ready to 3D print?",
-    a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. We try to create a watertight mesh file, but deep holes and hidden details are hard to scan. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application."
+    a: "The scan files we provide are high-quality meshes, but they may require some cleanup or modification depending on your intended use. We try to create a watertight mesh file, but deep holes and hidden details are hard to scan. Most 3D printing slicers can import STL files directly, though you may need to repair or optimize the mesh for your specific application.",
+    link: { href: "/3d-scanning-for-3d-printing/", text: "3D scanning for 3D printing" }
   },
   {
     q: "Do you accept parts from outside the US?",
