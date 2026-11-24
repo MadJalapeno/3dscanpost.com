@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /thanks/
 
 Sitemap: https://3dscanpost.com/sitemap.xml

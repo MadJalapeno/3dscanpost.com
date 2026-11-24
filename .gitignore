@@ -13,3 +13,7 @@ node_modules/
 
 package-lock.json
 .cache/
+# local worker
+worker/.dev.vars
+worker/node_modules/
+worker/.wrangler/

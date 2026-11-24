@@ -1,0 +1,35 @@
+---
+layout: default.njk
+title: "Request a 3D Scanning Quote | 3DScanPost"
+description: "Request a quote for mail-in 3D scanning. Tell us about your part and attach photos."
+permalink: /quote/
+noindex: true
+---
+<section class="py-16">
+    <div class="mx-auto max-w-6xl px-6">
+        <nav aria-label="Breadcrumb" class="text-sm opacity-70 mb-6">
+            <a class="link link-hover" href="/">Home</a> <span aria-hidden="true">/</span> <span>Request a quote</span>
+        </nav>
+        <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-[''] mb-4">Request a quote</h1>
+        <p class="mb-12 max-w-2xl opacity-70">Tell us about your part and attach a few photos. We'll reply with a quote, usually within 24 hours.</p>
+
+        <div class="grid gap-12 lg:grid-cols-5">
+            <div class="space-y-8 lg:col-span-2">
+                <div>
+                    <h2 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">What to include</h2>
+                    <ul class="space-y-3">
+                        {%- for item in ["Photos of your part from all angles", "Approximate dimensions", "Material type, if known", "Standard or express turnaround", "Any special concerns or requirements"] %}
+                        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>{{ item }}</span></li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">Prefer email?</h2>
+{% include "email.njk" %}
+                </div>
+            </div>
+
+{% include "quote-form.njk" %}
+        </div>
+    </div>
+</section>

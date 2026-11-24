@@ -1,56 +1,53 @@
 <!-- Contact -->
-    <section id="contact" class="py-20 bg-base-100">
+    <section id="contact" class="border-t border-base-content/10 bg-base-200 py-20">
         <div class="mx-auto max-w-6xl px-6">
-            <div class="max-w-2xl">
-                <h2 class="font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-[''] mb-4">Ready to Get Started?</h2>
-                <p class="mb-8 opacity-70">Got a part you want scanned? Send some photos and we'll get back to you within 24 hours.</p>
-                <div class="card card-border bg-base-100">
-                    <div class="card-body">
-                        <div class="text-left space-y-6">
-                            <div>
-                                <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                    Email Us
-                                </h3>
+            <h2 class="font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-[''] mb-4">Ready to Get Started?</h2>
+            <p class="mb-12 max-w-2xl opacity-70">Got a part you want scanned? Send some photos and we'll get back to you within 24 hours.</p>
+
+            <div class="grid gap-12 lg:grid-cols-5">
+                <!-- Left: what to send, alternative contact -->
+                <div class="space-y-8 lg:col-span-2">
+                    <div>
+                        <h3 class="mb-3 font-mono text-xs font-semibold uppercase tracking-widest text-primary">What to include</h3>
+                        <ul class="space-y-3">
+                            {%- for item in ["Photos of your part from all angles", "Approximate dimensions", "Material type, if known", "Standard or express turnaround", "Any special concerns or requirements"] %}
+                            <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>{{ item }}</span></li>
+                            {%- endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right: email -->
+                <div class="card card-border bg-base-100 lg:col-span-3">
+                    <div class="card-body justify-center">
+                        <h3 class="card-title font-display text-2xl">Email us</h3>
+                        <p class="opacity-80">Send photos from a few angles, the approximate dimensions and the material. We'll reply with a quote, usually within 24 hours.</p>
+                        <div class="mt-2">
 {% include "email.njk" %}
-                            </div>
-                            <div class="divider">What to Include</div>
-                            <div class="alert">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <div class="text-sm">
-                                    <ul class="[list-style-type:disc] [list-style-position:inside] space-y-1">
-                                        <li>Multiple photos of your part (all angles)</li>
-                                        <li>Approximate dimensions</li>
-                                        <li>Material type (if known)</li>
-                                        <li>Desired turnaround (standard or express)</li>
-                                        <li>Any special concerns or requirements</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="divider">Service Disclaimer</div>
-                            <div class="text-sm space-y-4">
-                                <div>
-                                    <h4 class="font-semibold mb-2">Accuracy & Quality</h4>
-                                    <p class="opacity-80">All 3D scans are provided on a best-effort basis. While we use the latest equipment and techniques, we do not guarantee the accuracy, completeness, or fitness of scans for any particular purpose. Scan quality may vary based on subject geometry, material properties, surface conditions, and environmental factors. You are responsible for verifying scan accuracy before relying on scans for critical applications (manufacturing, medical, etc.).</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-2">No Liability</h4>
-                                    <p class="opacity-80">We are not liable for any direct, indirect, incidental, or consequential damages arising from scan quality, accuracy, data loss, or inability to use scans as intended—including manufacturing errors, financial loss, or project delays.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-2">Intellectual Property & Copyright</h4>
-                                    <p class="opacity-80">You are solely responsible for ensuring you have the legal right to have items scanned. We do not verify ownership or copyright status. You agree not to hold us liable for scanning items containing copyrighted, trademarked, or proprietary material, or material belonging to third parties. You indemnify us against any claims arising from the content scanned or use of scans.</p>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold mb-2">Data Use</h4>
-                                    <p class="opacity-80">Scans may be used internally for process improvement, portfolio examples (anonymized), or troubleshooting unless otherwise agreed in writing.</p>
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service disclaimer -->
+            <div class="mt-16 border-t border-base-content/10 pt-10">
+                <h3 class="mb-6 font-mono text-xs font-semibold uppercase tracking-widest text-primary">Service disclaimer</h3>
+                <div class="grid gap-x-10 gap-y-6 text-sm md:grid-cols-2">
+                    <div>
+                        <h4 class="mb-2 font-semibold">Accuracy &amp; Quality</h4>
+                        <p class="opacity-80">All 3D scans are provided on a best-effort basis. While we use the latest equipment and techniques, we do not guarantee the accuracy, completeness, or fitness of scans for any particular purpose. Scan quality may vary based on subject geometry, material properties, surface conditions, and environmental factors. You are responsible for verifying scan accuracy before relying on scans for critical applications (manufacturing, medical, etc.).</p>
+                    </div>
+                    <div>
+                        <h4 class="mb-2 font-semibold">No Liability</h4>
+                        <p class="opacity-80">We are not liable for any direct, indirect, incidental, or consequential damages arising from scan quality, accuracy, data loss, or inability to use scans as intended—including manufacturing errors, financial loss, or project delays.</p>
+                    </div>
+                    <div>
+                        <h4 class="mb-2 font-semibold">Intellectual Property &amp; Copyright</h4>
+                        <p class="opacity-80">You are solely responsible for ensuring you have the legal right to have items scanned. We do not verify ownership or copyright status. You agree not to hold us liable for scanning items containing copyrighted, trademarked, or proprietary material, or material belonging to third parties. You indemnify us against any claims arising from the content scanned or use of scans.</p>
+                    </div>
+                    <div>
+                        <h4 class="mb-2 font-semibold">Data Use</h4>
+                        <p class="opacity-80">Scans may be used internally for process improvement, portfolio examples (anonymized), or troubleshooting unless otherwise agreed in writing.</p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,131 @@
+                <!-- Right: quote form -->
+                <div class="card card-border bg-base-100 lg:col-span-3">
+                    <div class="card-body">
+                        <h3 class="card-title font-display text-2xl">Request a quote</h3>
+                        <form id="quote-form" action="/api/quote" method="POST" enctype="multipart/form-data">
+                            <div class="grid gap-x-4 gap-y-1 sm:grid-cols-2">
+                                <div class="fieldset">
+                                    <label class="label" for="q-name">Your name</label>
+                                    <input type="text" name="name" id="q-name" class="input w-full" autocomplete="name" required />
+                                </div>
+                                <div class="fieldset">
+                                    <label class="label" for="q-email">Your email</label>
+                                    <input type="email" name="email" id="q-email" class="input w-full" autocomplete="email" required />
+                                </div>
+                                <div class="fieldset">
+                                    <label class="label" for="q-size">Approximate dimensions</label>
+                                    <input type="text" name="dimensions" id="q-size" class="input w-full" placeholder="e.g. 120 x 80 x 40 mm" />
+                                </div>
+                                <div class="fieldset">
+                                    <label class="label" for="q-material">Material (if known)</label>
+                                    <input type="text" name="material" id="q-material" class="input w-full" placeholder="e.g. black ABS, aluminium" />
+                                </div>
+                                <div class="fieldset">
+                                    <label class="label" for="q-country">Country</label>
+                                    <input type="text" name="country" id="q-country" class="input w-full" autocomplete="country-name" />
+                                </div>
+                                <div class="fieldset">
+                                    <label class="label" for="q-turnaround">Turnaround</label>
+                                    <select name="turnaround" id="q-turnaround" class="select w-full">
+                                        <option>Standard (2-3 days)</option>
+                                        <option>Express (24 hours)</option>
+                                    </select>
+                                </div>
+                                <div class="fieldset sm:col-span-2">
+                                    <label class="label" for="q-message">About your part</label>
+                                    <textarea name="message" id="q-message" class="textarea h-28 w-full" required></textarea>
+                                </div>
+                                <div class="fieldset sm:col-span-2">
+                                    <label class="label" for="q-photos">Photos (several angles)</label>
+                                    <input type="file" name="photos" id="q-photos" class="file-input w-full" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple />
+                                    <p class="label text-xs">Up to 8 photos. Large photos are shrunk automatically before sending.</p>
+                                </div>
+                            </div>
+
+                            <!-- Spam trap: hidden from people, filled in by bots -->
+                            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                            <div class="cf-turnstile mt-4" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="auto"></div>
+
+                            <div class="mt-4 flex flex-wrap items-center gap-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Send request</button>
+                                <p id="quote-status" class="text-sm" role="status" aria-live="polite"></p>
+                            </div>
+                            <p class="mt-4 text-xs opacity-70">Your details and photos are stored securely and used only to prepare your quote.</p>
+                        </form>
+                    </div>
+                </div>
+
+    <script>
+        (function () {
+            var form = document.getElementById('quote-form');
+            if (!form) return;
+            var MAX_FILES = 8, MAX_TOTAL = 30 * 1048576, MAX_EDGE = 2400;
+            var status = document.getElementById('quote-status');
+            var photos = document.getElementById('q-photos');
+
+            // Load the Turnstile script only when someone starts filling in the form.
+            var loaded = false;
+            function loadTurnstile() {
+                if (loaded) return;
+                loaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+                s.async = true;
+                document.head.appendChild(s);
+            }
+            form.addEventListener('focusin', loadTurnstile);
+
+            // Scale big phone photos down to JPEG before upload. Falls back to the original (e.g. HEIC on Chrome).
+            function shrink(file) {
+                if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 800 * 1024) return Promise.resolve(file);
+                return createImageBitmap(file).then(function (bmp) {
+                    var scale = Math.min(1, MAX_EDGE / Math.max(bmp.width, bmp.height));
+                    var c = document.createElement('canvas');
+                    c.width = Math.round(bmp.width * scale);
+                    c.height = Math.round(bmp.height * scale);
+                    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+                    if (bmp.close) bmp.close();
+                    return new Promise(function (resolve) { c.toBlob(resolve, 'image/jpeg', 0.85); }).then(function (blob) {
+                        if (!blob || blob.size >= file.size) return file;
+                        return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+                    });
+                }).catch(function () { return file; });
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var chosen = Array.prototype.slice.call(photos.files);
+                if (chosen.length > MAX_FILES) { status.textContent = 'Please choose at most ' + MAX_FILES + ' photos.'; return; }
+                var token = form.querySelector('[name="cf-turnstile-response"]');
+                if (!token || !token.value) { status.textContent = 'Please wait for the spam check to finish, then try again.'; loadTurnstile(); return; }
+
+                var btn = form.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                status.textContent = chosen.length ? 'Preparing photos...' : 'Sending...';
+                Promise.all(chosen.map(shrink)).then(function (files) {
+                    var total = files.reduce(function (n, f) { return n + f.size; }, 0);
+                    if (total > MAX_TOTAL) throw new Error('size');
+                    var fd = new FormData(form);
+                    fd.delete('photos');
+                    files.forEach(function (f) { fd.append('photos', f, f.name); });
+                    status.textContent = 'Sending...';
+                    return fetch(form.action, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+                }).then(function (r) {
+                    return r.json().catch(function () { return {}; }).then(function (data) {
+                        if (!r.ok || !data.ok) throw new Error(data.error || 'failed');
+                        form.reset();
+                        status.textContent = 'Thanks, your request is on its way. We will reply by email.';
+                        if (window.rybbit && window.rybbit.event) window.rybbit.event('quote_form_submitted');
+                    });
+                }).catch(function (err) {
+                    status.textContent = err.message === 'size'
+                        ? 'Those photos are over 30 MB in total. Please send fewer, or email them to us.'
+                        : (err.message && err.message !== 'failed' ? err.message : 'Sorry, that did not send. Please email us instead.');
+                }).then(function () {
+                    btn.disabled = false;
+                    if (window.turnstile) window.turnstile.reset();
+                });
+            });
+        })();
+    </script>
