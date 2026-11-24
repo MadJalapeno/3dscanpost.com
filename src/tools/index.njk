@@ -1,0 +1,202 @@
+---
+layout: default.njk
+permalink: /tools/
+title: "Free 3D Scan Tools | Mesh Alignment & Comparison | 3DScanPost"
+tags: indexable
+description: "Two free desktop tools for 3D scan data: align, repair and shrink STL scans, then compare a reverse-engineered model against the scan it came from."
+---
+
+<!-- Hero -->
+<section class="relative isolate overflow-hidden">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(color-mix(in_oklab,var(--color-base-content)_22%,transparent)_1px,transparent_1px)] bg-size-[24px_24px] [mask-image:radial-gradient(ellipse_at_60%_40%,#000_20%,transparent_75%)]" aria-hidden="true"></div>
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-24">
+    <div>
+      <span class="badge badge-ghost font-mono uppercase tracking-wider">Free desktop software</span>
+      <h1 class="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">3D Mesh Tools</h1>
+      <p class="mt-6 text-xl opacity-80">Two free programs for working with 3D scan data. Windows, macOS and Linux.</p>
+      <div class="stats stats-vertical xl:stats-horizontal mt-8 max-w-full border border-base-content/10 bg-base-100">
+        <div class="stat">
+          <div class="stat-title font-mono uppercase tracking-wider">Platforms</div>
+          <div class="stat-value font-mono text-lg text-primary">3 platforms</div>
+          <div class="stat-desc font-mono">Windows, macOS, Linux</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title font-mono uppercase tracking-wider">Needs</div>
+          <div class="stat-value font-mono text-lg text-primary">Python 3.10+</div>
+          <div class="stat-desc font-mono">Five free libraries</div>
+        </div>
+        <div class="stat">
+          <div class="stat-title font-mono uppercase tracking-wider">Cost</div>
+          <div class="stat-value font-mono text-lg text-primary">Free</div>
+          <div class="stat-desc font-mono">No fees</div>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://github.com/madjalapeno/3dmeshtools/archive/refs/heads/main.zip" class="btn btn-primary btn-lg">Download both</a>
+        <a href="/tools/install/" class="btn btn-outline btn-lg">Installation guide</a>
+      </div>
+    </div>
+    <div>
+      <div class="relative p-3">
+        <span class="pointer-events-none absolute left-0 top-0 h-5 w-5 border-l-2 border-t-2 border-primary" aria-hidden="true"></span><span class="pointer-events-none absolute right-0 top-0 h-5 w-5 border-r-2 border-t-2 border-primary" aria-hidden="true"></span><span class="pointer-events-none absolute bottom-0 left-0 h-5 w-5 border-b-2 border-l-2 border-primary" aria-hidden="true"></span><span class="pointer-events-none absolute bottom-0 right-0 h-5 w-5 border-b-2 border-r-2 border-primary" aria-hidden="true"></span>
+        {% shot "00-hero-compare-remote.png", "3D Mesh Compare showing the deviation between a remote control model and its scan", "", "", true %}
+        <span class="pointer-events-none mt-3 block h-2 opacity-30 bg-[repeating-linear-gradient(90deg,var(--color-base-content)_0_1px,transparent_1px_10px)]" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Choose a tool -->
+  <div class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="grid gap-6 md:grid-cols-2">
+      <a href="#mesh-tools" class="card card-border bg-base-100 transition-colors hover:border-primary motion-reduce:transition-none">
+        <div class="card-body">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">Tool 1</span>
+          <h2 class="card-title font-display text-2xl">3D Mesh Tools</h2>
+          <p class="opacity-80">Align and modify STL files from 3D scans. Check, repair, level, flatten, scale, re-centre and shrink them.</p>
+          <span class="font-semibold text-primary">Align &amp; modify scans →</span>
+        </div>
+      </a>
+      <a href="#mesh-compare" class="card card-border bg-base-100 transition-colors hover:border-primary motion-reduce:transition-none">
+        <div class="card-body">
+          <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">Tool 2</span>
+          <h2 class="card-title font-display text-2xl">3D Mesh Compare</h2>
+          <p class="opacity-80">Compare a reverse-engineered model with the scan data it came from, and see every point's deviation.</p>
+          <span class="font-semibold text-primary">Compare to scan data →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOL 1: 3D Mesh Tools ============ -->
+<section id="mesh-tools" class="border-y border-base-content/10 bg-base-200 py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 max-w-3xl">
+      <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">Tool 1</span>
+      <h2 class="mt-2 font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">3D Mesh Tools</h2>
+      <p class="mt-6 text-xl opacity-80">Align and modify STL files from 3D scans. Scans rarely come out clean, watertight or square to anything — fix that in a few clicks, then save an STL that drops straight into CAD, a slicer or a reverse-engineering workflow.</p>
+    </div>
+
+    <div class="mb-16 grid gap-px overflow-hidden rounded-box border border-base-content/10 bg-base-content/10 md:grid-cols-2 lg:grid-cols-3">
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Level on any face</h3>
+        <p class="mt-2 opacity-80">Pick three points or let it find the largest flat area. Refine the fit by least squares, and flatten a rippled face perfectly flat.</p>
+      </div>
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Square, scale &amp; centre</h3>
+        <p class="mt-2 opacity-80">Align an edge to X or Y, scale to a known dimension, and put the origin exactly where you want it — even at the centre of a hole.</p>
+      </div>
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Check &amp; repair</h3>
+        <p class="mt-2 opacity-80">One-click health report: holes, loose pieces, non-manifold edges and flipped triangles, labelled on the model. Remove debris and fill small holes.</p>
+      </div>
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Shrink huge scans</h3>
+        <p class="mt-2 opacity-80">Type the file size you want. A 238&nbsp;MB scan becomes 20&nbsp;MB with the surface moved by thousandths of a millimetre.</p>
+      </div>
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Measure</h3>
+        <p class="mt-2 opacity-80">Distances, angles, and the diameter and centre of any hole from three picked points.</p>
+      </div>
+      <div class="bg-base-100 p-6">
+        <h3 class="font-display text-xl font-semibold">Undo &amp; re-use</h3>
+        <p class="mt-2 opacity-80">Every step is undoable and your original is never touched. The 4×4 matrix is saved so you can apply the same move to the full-resolution scan.</p>
+      </div>
+    </div>
+
+    <div class="mb-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {% shot "01-scan-opened.png", "A 5 million triangle scan open in 3D Mesh Tools", "Open a scan — here 5 million triangles, 238 MB." %}
+      {% shot "02-level-plane.png", "Previewing a levelling plane fitted to the base of the scan", "Preview the plane before levelling." %}
+      {% shot "03-leveled-centred.png", "The scan levelled and centred on the origin", "Levelled and centred on the origin." %}
+      {% shot "04-mesh-check.png", "The mesh check dialog reporting a watertight mesh", "Mesh check: watertight, no holes, one piece." %}
+      {% shot "05-reduce-dialog.png", "The Reduce file size dialog with a 20 MB target", "Choose a target file size." %}
+      {% shot "07-reduced-check.png", "Non-manifold edges labelled on the reduced mesh", "Problems labelled on the model after reduction." %}
+    </div>
+    <p class="mb-8 font-mono text-xs opacity-70">Click any screenshot to enlarge it.</p>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="/tools/3d-mesh-tools/" class="btn btn-primary btn-lg">3D Mesh Tools guide</a>
+      <a href="https://github.com/madjalapeno/3dmeshtools/archive/refs/heads/main.zip" class="btn btn-outline btn-lg">Download</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOL 2: 3D Mesh Compare ============ -->
+<section id="mesh-compare" class="py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-16 grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">Tool 2</span>
+        <h2 class="mt-2 font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">3D Mesh Compare</h2>
+        <p class="mt-6 text-xl opacity-80">How close is your reverse-engineered model to the scan it came from? Export the model as an STL, line it up with the scan data, and every point is coloured by its distance from the reference surface.</p>
+        <ul class="mt-6 space-y-3 mb-8">
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Automatic best fit</strong> — tries several starting orientations, so a symmetric part doesn't end up upside down</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Tolerance colour map</strong> — green within tolerance, red for extra material, blue for missing; hover to read the deviation anywhere</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Section view</strong> — cut through the part and see the outline gap, magnified</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Pick a range on the histogram</strong> — everything else turns grey, so problem areas stand out</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Statistics by surface area</strong> — % in tolerance, mean, RMS, 95% band and histogram</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Branded HTML report</strong> — your logo and job details, ready to send to a client (<a class="link link-primary" href="/tools/demo-report/">see a demo report</a>)</span></li>
+        <li class="flex gap-3"><svg class="mt-1 size-5 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span><strong>Batch mode</strong> — run it from the command line for a pile of parts</span></li>
+        </ul>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a href="/tools/3d-mesh-compare/" class="btn btn-primary btn-lg">3D Mesh Compare guide</a>
+          <a href="/tools/demo-report/" class="btn btn-outline btn-lg">View demo report</a>
+          <a href="https://github.com/madjalapeno/3dmeshtools/archive/refs/heads/main.zip" class="link link-hover">Download</a>
+        </div>
+      </div>
+      <div>
+        {% shot "09-compare-deviation.png", "Deviation colour map, statistics and histogram in 3D Mesh Compare", "Deviation map with statistics and histogram." %}
+      </div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="border-t border-base-content/15 pt-6">
+        <span class="block font-mono text-3xl font-bold leading-none text-primary" aria-hidden="true">01</span>
+        <h3 class="mt-4 font-display text-xl font-semibold">Load both</h3>
+        <p class="mt-2 opacity-80">Open the reference (your model as an STL) and the scan — or drop both files on the window.</p>
+      </div>
+      <div class="border-t border-base-content/15 pt-6">
+        <span class="block font-mono text-3xl font-bold leading-none text-primary" aria-hidden="true">02</span>
+        <h3 class="mt-4 font-display text-xl font-semibold">Align</h3>
+        <p class="mt-2 opacity-80">One click for automatic best fit, or pick three matching point pairs.</p>
+      </div>
+      <div class="border-t border-base-content/15 pt-6">
+        <span class="block font-mono text-3xl font-bold leading-none text-primary" aria-hidden="true">03</span>
+        <h3 class="mt-4 font-display text-xl font-semibold">Inspect &amp; report</h3>
+        <p class="mt-2 opacity-80">Read the deviation map, pin callouts, and export the HTML report or a CSV.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TUTORIAL: Scan to SolidWorks ============ -->
+<section id="tutorial" class="border-t border-base-content/10 py-20">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2">
+    <div>
+      <span class="font-mono text-xs font-semibold uppercase tracking-widest text-primary">Tutorial</span>
+      <h2 class="mt-2 font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">From a scan to SolidWorks</h2>
+      <p class="mt-6 text-xl opacity-80">Turn a scanned STL into section curves and flat faces that open in SolidWorks as an IGES file. Claude does the slicing through ScanRuler. You paste in a few prompts and change the numbers for your own part.</p>
+      <p class="mt-4 opacity-80">Start by aligning your scan in <a class="link" href="#mesh-tools">3D Mesh Tools</a>, then follow the steps.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/guides/scan-to-solidworks/" class="btn btn-primary btn-lg">Read the tutorial</a>
+      </div>
+    </div>
+    <div>
+      {% shot "step3-section-lines.png", "A hub cap scan with five coloured section lines cut through its centre, seen from above and at an angle", "Five section cuts through a scanned hub cap." %}
+    </div>
+  </div>
+</section>
+
+<!-- Together -->
+<section class="border-y border-base-content/10 bg-base-200 py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl">
+      <h2 class="font-display text-3xl font-bold tracking-tight md:text-4xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">Free, and installed together</h2>
+      <p class="mt-6 opacity-80">Both programs are in one download — a small Python program that needs Python 3.10 or newer. No licence fees, no subscriptions. Source on <a class="link link-primary" href="https://github.com/madjalapeno/3dmeshtools">GitHub</a>.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://github.com/madjalapeno/3dmeshtools/archive/refs/heads/main.zip" class="btn btn-primary btn-lg">Download (zip)</a>
+        <a href="/tools/install/" class="btn btn-outline btn-lg">Installation guide</a>
+      </div>
+    </div>
+  </div>
+</section>

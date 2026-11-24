@@ -1,0 +1,15 @@
+**The window flashes open and closes immediately.**
+Run it from a terminal instead of double-clicking, so you can read the error. In most cases a library is missing.
+
+**"No module named numpy" (or pyvista, pyvistaqt, qtpy).**
+The libraries were installed for a different copy of Python. Run the install command using the same `python` you use to start the program:
+
+```
+python -m pip install numpy scipy pyvista pyvistaqt pyside6
+```
+
+**"Can't find the 'meshtools3d' folder".**
+`3dmeshtools.py` and `3dmeshcompare.py` both need the `meshtools3d` folder from the zip next to them. Unzip the whole download rather than copying out just the one file.
+
+**On Linux: "Could not load the Qt platform plugin xcb".**
+Install the missing system library, e.g. on Ubuntu/Debian: `sudo apt install libxcb-cursor0`.
