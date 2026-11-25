@@ -15,8 +15,13 @@ module.exports = [
   },
   {
     q: "Do you offer CAD conversion or reverse engineering?",
-    a: "We can recreate your part in Solidworks and give you a STEP file suitable for manufacturing, but without knowing the full design intent the part is an approximation of the original. Price will depend on part geometry and will be discussed before work starts.",
+    a: "We can recreate your part in Solidworks and give you a STEP file suitable for manufacturing, but without knowing the full design intent the part is an approximation of the original. Prices start at $55 and depend on part geometry, and we agree the price with you before work starts.",
     link: { href: "/reverse-engineering-3d-scanning/", text: "Reverse engineering with 3D scanning" }
+  },
+  {
+    q: "Can you print or machine the part for me?",
+    a: "We scan parts and prepare the files, but we don't manufacture them, apart from occasionally printing a part as a sanity check for a complex assembly. We point customers to trusted printing, CNC and sheet metal services for the next step.",
+    link: { href: "/prototyping/", text: "Prototyping services after 3D scanning" }
   },
   {
     q: "What if my part gets damaged in shipping?",

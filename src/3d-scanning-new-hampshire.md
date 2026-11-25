@@ -2,25 +2,25 @@
 layout: article.njk
 title: "3D Scanning in New Hampshire | Seacoast NH | 3DScanPost"
 breadcrumb: "3D Scanning in New Hampshire"
-description: "3D scanning from the Seacoast of New Hampshire. Mail your part from anywhere in the world, or drop off locally. STL and PLY files, from $55."
+description: "3D scanning from the Seacoast of New Hampshire. Mail your part from anywhere in the world, or drop off locally. STL or PLY files, from $55."
 permalink: /3d-scanning-new-hampshire/
 tags: indexable
 ---
 
 # 3D Scanning in New Hampshire
 
-3DScanPost is a 3D scanning service based on the Seacoast of New Hampshire, serving customers worldwide by mail. We scan mechanical parts, prototypes, sculptures and one-off objects and deliver the results as STL and PLY mesh files that open in virtually any CAD, slicer or mesh tool.
+3DScanPost is a 3D scanning service based on the Seacoast of New Hampshire, serving customers worldwide by mail. We scan mechanical parts, prototypes, sculptures and one-off objects and deliver the results as STL or PLY mesh files that open in virtually any CAD, slicer or mesh tool.
 
 ## Three ways to get scanned
 
 - **Mail it to us.** Photograph your part, get a quote, and ship it to us, including a return shipping label in the package. This works from anywhere in the world, and it is how most customers use the service. See [how it works](/#how-it-works).
 - **Bring it to us.** If you're local, we can arrange for you to come to our Seacoast, NH facility.
-- **We come to you.** For parts that can't be moved, we can travel to you, up to about one hour of travel time.
+- **We come to you.** For parts that can't be moved, we can travel to you, up to about one hour of travel time. Our mileage rate is the standard IRS rate.
 
 ## What you get
 
 - Laser scanning with **±0.2mm accuracy** for mechanical parts, hard surfaces and reverse engineering, or infrared scanning with **full color texture** for organic shapes and decorative objects. Read the [scan type comparison](/#scan-types).
-- **STL and PLY** files delivered digitally.
+- **STL or PLY** files delivered digitally.
 - **2-3 day standard turnaround**, or a 24-hour express option for a 30% premium.
 - Screenshots to approve before you pay.
 
@@ -30,7 +30,7 @@ Standard scans start at **$55** and scale with part complexity and scan time. Yo
 
 ## Local questions
 
-**What size parts can you scan?** From roughly 100mm cubes up to about half the size of a car. If you're not sure, send photos and we'll tell you.
+**What size parts can you scan?** From roughly 50mm cubes up to about half the size of a car. If you're not sure, send photos and we'll tell you.
 
 **Can you scan shiny or dark parts?** Yes. For reflective, transparent or very dark surfaces we can apply a temporary scanning spray that evaporates after scanning.
 
