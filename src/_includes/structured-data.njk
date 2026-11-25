@@ -47,6 +47,13 @@
         },
         {
           "@type": "Offer",
+          "name": "CAD conversion (SolidWorks model and STEP file)",
+          "description": "Optional rebuild of a scanned part as a parametric SolidWorks model with a STEP file, measured against the physical part.",
+          "priceSpecification": { "@type": "PriceSpecification", "minPrice": 55, "priceCurrency": "USD" },
+          "itemOffered": { "@type": "Service", "name": "CAD conversion from 3D scan", "serviceType": "Reverse engineering" }
+        },
+        {
+          "@type": "Offer",
           "name": "Express 3D scanning (24-hour turnaround)",
           "description": "Priority 24-hour turnaround for a 30% premium over standard pricing.",
           "itemOffered": { "@type": "Service", "name": "Express mail-in 3D scanning", "serviceType": "3D scanning" }
@@ -71,13 +78,44 @@
     "mainEntity": faqEntities
   }), businessGraph) -%}
 {%- else -%}
-  {%- set businessGraph = (businessGraph.push({
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
-      { "@type": "ListItem", "position": 2, "name": breadcrumb or title, "item": pageUrl }
-    ]
-  }), businessGraph) -%}
+  {%- set crumbs = [{ "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" }] -%}
+  {%- if parent -%}
+    {%- set crumbs = (crumbs.push({ "@type": "ListItem", "position": 2, "name": parent.name, "item": site.url + parent.url }), crumbs) -%}
+  {%- endif -%}
+  {%- set crumbs = (crumbs.push({ "@type": "ListItem", "position": crumbs.length + 1, "name": breadcrumb or title, "item": pageUrl }), crumbs) -%}
+  {%- set businessGraph = (businessGraph.push({ "@type": "BreadcrumbList", "itemListElement": crumbs }), businessGraph) -%}
+
+  {%- set modified = page.inputPath | lastmod -%}
+  {%- if schema == "article" -%}
+    {%- set article = {
+      "@type": "Article",
+      "@id": pageUrl + "#article",
+      "headline": title | replace(" | 3DScanPost", ""),
+      "description": description,
+      "image": (site.url + ogImage) if ogImage else site.ogImage,
+      "mainEntityOfPage": pageUrl,
+      "inLanguage": "en-US",
+      "dateModified": modified or undefined,
+      "author": { "@id": site.url + "/#business" },
+      "publisher": { "@id": site.url + "/#business" }
+    } -%}
+    {%- set businessGraph = (businessGraph.push(article), businessGraph) -%}
+  {%- elif schema == "software" -%}
+    {%- set software = {
+      "@type": "SoftwareApplication",
+      "@id": pageUrl + "#software",
+      "name": breadcrumb,
+      "description": description,
+      "url": pageUrl,
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "downloadUrl": "https://github.com/madjalapeno/3dmeshtools/archive/refs/heads/main.zip",
+      "image": (site.url + ogImage) if ogImage else site.ogImage,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@id": site.url + "/#business" }
+    } -%}
+    {%- set businessGraph = (businessGraph.push(software), businessGraph) -%}
+  {%- endif -%}
 {%- endif -%}
 
 <!-- JSON-LD Structured Data -->

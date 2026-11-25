@@ -1,12 +1,20 @@
 ---
 layout: article.njk
-title: "Import an STL Scan into SolidWorks as IGES Curves | 3DScanPost"
+title: "STL Scan to SolidWorks as IGES Curves | 3DScanPost"
 breadcrumb: "Scan to SolidWorks"
-description: Turn a scanned STL into section curves and flat faces that open in SolidWorks as an IGES file, using Claude and ScanRuler. Copy-and-paste prompts.
+description: Turn a scanned STL into section curves and flat faces that open in SolidWorks as an IGES file, using Claude AI and ScanRuler. Copy-and-paste prompts.
 permalink: /guides/scan-to-solidworks/
-tags: indexable
+tags:
+  - indexable
+  - guide
 cta: download
 ogType: article
+parent:
+  name: Guides
+  url: /guides/
+schema: article
+ogImage: /assets/images/og/solidworks-guide.jpg
+ogImageAlt: "Five section lines cut through a scanned hub cap, ready to export as IGES curves"
 ---
 
 # From a scanned STL to section curves in SolidWorks

@@ -3,6 +3,7 @@ const now = new Date();
 // Import 11ty plugins
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import http from "node:http";
+import { execSync } from "node:child_process";
 import Image from "@11ty/eleventy-img";
 import { openSync, readSync, closeSync } from "node:fs";
 
@@ -130,6 +131,19 @@ export default function (eleventyConfig) {
   });
 
   // Filters
+  // Last git commit date of a source file. Returns "" when git history is missing or shallow (a shallow
+  // clone would give every page the same date, which search engines would learn to ignore).
+  const lastmodCache = new Map();
+  const git = (args) => { try { return execSync(`git ${args}`, { stdio: ["ignore", "pipe", "ignore"] }).toString().trim(); } catch { return ""; } };
+  const shallow = git("rev-parse --is-shallow-repository") !== "false";
+  eleventyConfig.addFilter("lastmod", function (inputPath) {
+    if (shallow || !inputPath) return "";
+    if (!lastmodCache.has(inputPath)) {
+      const dirty = git(`status --porcelain -- "${inputPath}"`);
+      lastmodCache.set(inputPath, dirty ? "" : git(`log -1 --format=%cI -- "${inputPath}"`));
+    }
+    return lastmodCache.get(inputPath);
+  });
   eleventyConfig.addFilter("dateFilter", function(date) {
     const d = date instanceof Date ? date : new Date(date);
     return d.toISOString().split('T')[0];

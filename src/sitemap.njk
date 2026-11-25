@@ -8,8 +8,9 @@ eleventyExcludeFromCollections: true
 {%- for item in collections.indexable %}
   <url>
     <loc>{{ site.url }}{{ item.url }}</loc>
-{%- if item.data.lastmod %}
-    <lastmod>{{ item.data.lastmod | dateFilter }}</lastmod>
+{%- set lm = item.data.lastmod or (item.inputPath | lastmod) %}
+{%- if lm %}
+    <lastmod>{{ lm | dateFilter }}</lastmod>
 {%- endif %}
   </url>
 {%- endfor %}

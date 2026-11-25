@@ -1,11 +1,17 @@
 ---
 layout: article.njk
-title: "3D Mesh Compare | Free 3D Scan vs CAD Deviation Map | 3DScanPost"
+title: "3D Mesh Compare | Free Scan vs CAD Deviation | 3DScanPost"
 breadcrumb: "3D Mesh Compare"
 description: Free desktop tool that compares a 3D scan with its CAD model or another mesh, colouring every point by deviation with tolerance statistics and an HTML report.
 permalink: /tools/3d-mesh-compare/
 tags: indexable
 cta: download
+parent:
+  name: Free Tools
+  url: /tools/
+schema: software
+ogImage: /assets/images/og/compare.jpg
+ogImageAlt: "A deviation colour map of a scanned remote control in 3D Mesh Compare"
 ---
 
 # 3D Mesh Compare

@@ -1,0 +1,28 @@
+---
+layout: default.njk
+permalink: /guides/
+title: "3D Scanning Guides & Tutorials | 3DScanPost"
+description: "Step-by-step guides for working with 3D scan data: cleaning up scans, bringing them into CAD, and checking models against the original part."
+tags: indexable
+breadcrumb: "Guides"
+---
+
+<section class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+  <nav aria-label="Breadcrumb" class="mb-6 text-sm opacity-70">
+    <a class="link link-hover" href="/">Home</a> <span aria-hidden="true">/</span> <span>Guides</span>
+  </nav>
+  <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">Guides</h1>
+  <p class="mt-6 max-w-3xl text-xl opacity-80">Step-by-step tutorials for working with 3D scan data. Most use our <a class="link link-primary" href="/tools/">free tools</a>.</p>
+
+  <div class="mt-12 grid gap-6 md:grid-cols-2">
+{%- for guide in collections.guide | reverse %}
+    <a href="{{ guide.url }}" class="card card-border bg-base-100 transition-colors hover:border-primary motion-reduce:transition-none">
+      <div class="card-body">
+        <h2 class="card-title font-display text-2xl">{{ guide.data.breadcrumb or guide.data.title }}</h2>
+        <p class="opacity-80">{{ guide.data.description }}</p>
+        <span class="font-semibold text-primary">Read the guide →</span>
+      </div>
+    </a>
+{%- endfor %}
+  </div>
+</section>

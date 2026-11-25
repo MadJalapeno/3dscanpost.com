@@ -3,7 +3,7 @@ layout: default.njk
 ---
 <article class="container mx-auto px-6 py-16 max-w-3xl">
     <nav aria-label="Breadcrumb" class="text-sm opacity-70 mb-6">
-        <a class="link link-hover" href="/">Home</a> <span aria-hidden="true">/</span> <span>{{ breadcrumb or title }}</span>
+        <a class="link link-hover" href="/">Home</a> <span aria-hidden="true">/</span> {% if parent %}<a class="link link-hover" href="{{ parent.url }}">{{ parent.name }}</a> <span aria-hidden="true">/</span> {% endif %}<span>{{ breadcrumb or title }}</span>
     </nav>
     <div id="article-body" class="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-base-content prose-p:text-base-content prose-li:text-base-content prose-strong:text-base-content prose-a:text-primary prose-code:text-base-content prose-pre:bg-base-200 prose-pre:text-base-content prose-pre:border prose-pre:border-base-content/15 prose-pre:rounded-box prose-pre:pr-14 prose-pre:shadow-none [&_pre_code]:text-inherit">
         {{ content | safe }}

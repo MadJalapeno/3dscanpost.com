@@ -1,11 +1,17 @@
 ---
 layout: article.njk
-title: "3D Mesh Tools | Free STL Repair, Levelling & Scaling | 3DScanPost"
+title: "3D Mesh Tools | Free STL Repair & Alignment | 3DScanPost"
 breadcrumb: "3D Mesh Tools"
 description: Free desktop tool for checking, repairing, levelling, flattening, scaling, re-centring and shrinking STL meshes and 3D scans.
 permalink: /tools/3d-mesh-tools/
 tags: indexable
 cta: download
+parent:
+  name: Free Tools
+  url: /tools/
+schema: software
+ogImage: /assets/images/og/mesh-tools.jpg
+ogImageAlt: "A 3D scan of a part open in 3D Mesh Tools"
 ---
 
 # 3D Mesh Tools
