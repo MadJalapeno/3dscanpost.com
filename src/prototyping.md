@@ -2,7 +2,7 @@
 layout: article.njk
 title: "Prototyping from a 3D Scan | 3D Print & CNC | 3DScanPost"
 breadcrumb: "Prototyping"
-description: "Turn a 3D scan into a physical prototype. We scan and prepare your STL, STEP or PLY files; these trusted manufacturing partners can print or machine the part."
+description: "Turn a 3D scan into a physical prototype. We scan and prepare your STL or STEP files; these trusted manufacturing partners can print or machine the part."
 permalink: /prototyping/
 tags: indexable
 ---
@@ -15,7 +15,7 @@ Once you have a scan of an existing part, a manufacturing partner can turn it in
 
 ## How scan to prototype works
 
-1. **We [scan your part](/#how-it-works)** and deliver STL and PLY files. These are accurate to ±0.2mm in laser mode.
+1. **We [scan your part](/#how-it-works)** and deliver an STL file. It is accurate to ±0.2mm in laser mode.
 2. **Optional: [reverse engineering](/reverse-engineering-3d-scanning/).** We recreate the part as a STEP file in SolidWorks, which is the format most CNC and machine shops want.
 3. **Upload the file to a manufacturer** for a quote and production.
 

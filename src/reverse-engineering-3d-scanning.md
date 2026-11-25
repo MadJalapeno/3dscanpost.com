@@ -27,7 +27,7 @@ CAD conversion starts at **$55**. The price depends on part geometry and is agre
 
 ## Verify before you rely on it
 
-Scans are provided on a best-effort basis. Check the scan and any recreated model against the physical part before using it for critical applications. Our [service disclaimer](/#contact) has the details.
+Scans are provided on a best-effort basis. Check the scan and any recreated model against the physical part before using it for critical applications. Our [service disclaimer](/quote/#disclaimer) has the details.
 
 ## How to start
 

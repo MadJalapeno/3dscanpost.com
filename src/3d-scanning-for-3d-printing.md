@@ -2,7 +2,7 @@
 layout: article.njk
 title: "3D Scanning for 3D Printing | Real Parts to STL | 3DScanPost"
 breadcrumb: "3D Scanning for 3D Printing"
-description: "Turn a real object into a printable STL. Mail your part, we 3D scan it with laser or color infrared scanning and send back STL and PLY files. From $55."
+description: "Turn a real object into a printable STL. Mail your part, we 3D scan it with laser or color infrared scanning and send back an STL file (PLY for color). From $55."
 permalink: /3d-scanning-for-3d-printing/
 tags: indexable
 ---
@@ -17,7 +17,7 @@ Need to reproduce a broken part, make an adapter that fits an existing object, o
 2. **We quote and recommend a scan type.** Laser scanning suits precision parts; infrared scanning suits organic or colored objects. See the [comparison](/#scan-types).
 3. **Ship your part**, and include a return shipping label in the package.
 4. **We scan and send screenshots** for your approval.
-5. **You pay by Venmo or PayPal** and receive your STL and PLY files, and we ship your original part back.
+5. **You pay by Venmo or PayPal** and receive your STL file (or PLY for color), and we ship your original part back.
 
 ## STL or PLY or STEP?
 

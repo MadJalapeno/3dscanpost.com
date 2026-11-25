@@ -2,7 +2,7 @@
 layout: article.njk
 title: "3D Scanning in New Hampshire | Seacoast NH | 3DScanPost"
 breadcrumb: "3D Scanning in New Hampshire"
-description: "3D scanning from the Seacoast of New Hampshire. Mail your part from anywhere in the world, or drop off locally. STL or PLY files, from $55."
+description: "3D scanning from the Seacoast of New Hampshire. Mail your part from anywhere in the world, or drop off locally. STL files, from $55."
 permalink: /3d-scanning-new-hampshire/
 tags: indexable
 ---
@@ -20,7 +20,7 @@ tags: indexable
 ## What you get
 
 - Laser scanning with **±0.2mm accuracy** for mechanical parts, hard surfaces and reverse engineering, or infrared scanning with **full color texture** for organic shapes and decorative objects. Read the [scan type comparison](/#scan-types).
-- **STL or PLY** files delivered digitally.
+- **STL** files delivered digitally, with PLY on request for color.
 - **2-3 day standard turnaround**, or a 24-hour express option for a 30% premium.
 - Screenshots to approve before you pay.
 

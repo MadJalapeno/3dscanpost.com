@@ -1,7 +1,7 @@
 module.exports = {
   name: "3DScanPost",
   url: "https://3dscanpost.com",
-  description: "Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get high-quality STL or PLY scan files back.",
+  description: "Professional 3D scanning service for hobbyists and small businesses. Mail us your parts, get a high-quality STL scan file back (PLY for color on request).",
   ogImage: "https://3dscanpost.com/assets/images/og-image.jpg",
   // Cloudflare Turnstile site key. Local dev (NODE_ENV=dev) uses Cloudflare's always-pass test key,
   // because the real widget only works on 3dscanpost.com.
