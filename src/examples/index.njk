@@ -1,0 +1,49 @@
+---
+layout: default.njk
+title: "3D Scan Examples | Interactive Models | 3DScanPost"
+breadcrumb: "Examples"
+description: "Interactive examples of real 3D scans from 3DScanPost. Rotate, zoom and switch to wireframe to see the mesh, detail and accuracy you can expect."
+permalink: /examples/
+tags: indexable
+ogImage: /assets/images/og/battery-pack.jpg
+ogImageAlt: "Wireframe view of a 3D scanned power tool battery pack"
+---
+
+<section class="mx-auto max-w-6xl px-6 py-16 lg:py-20">
+  <nav aria-label="Breadcrumb" class="mb-6 text-sm opacity-70">
+    <a class="link link-hover" href="/">Home</a> <span aria-hidden="true">/</span> <span>Examples</span>
+  </nav>
+  <h1 class="font-display text-4xl font-bold tracking-tight md:text-5xl after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary after:content-['']">3D Scan Examples</h1>
+  <div class="mt-6 max-w-3xl space-y-4 text-lg opacity-80">
+    <p>These are real parts, scanned and delivered the way yours would be. Each page has an interactive 3D model you can rotate and zoom. Switch to wireframe to see the triangles that make up the mesh and how finely the surface has been captured.</p>
+    <p>Every scan is a mesh of tiny triangles, saved as an STL or PLY file. Our laser scanner is accurate to ±0.2mm, so small features such as latches, buttons and screw threads come through. Pick an example to see how a part like yours looks once it is scanned.</p>
+  </div>
+
+  <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+{%- for ex in collections.example | sort(false, false, "data.order") %}
+    <a href="{{ ex.url }}" class="card card-border overflow-hidden bg-base-100 transition-colors hover:border-primary motion-reduce:transition-none">
+      <figure class="aspect-[4/3] bg-[#0c1812]"><img src="{{ ex.data.thumb }}" alt="{{ ex.data.thumbAlt }}" width="800" height="600" loading="lazy" class="h-full w-full object-cover"></figure>
+      <div class="card-body">
+        <h2 class="card-title font-display text-2xl">{{ ex.data.breadcrumb }}</h2>
+        <p class="opacity-80">{{ ex.data.card }}</p>
+        <span class="font-semibold text-primary">View the scan →</span>
+      </div>
+    </a>
+{%- endfor %}
+  </div>
+
+  <div class="mt-16 grid gap-8 md:grid-cols-2">
+    <div>
+      <h2 class="font-display text-2xl font-semibold">What you receive</h2>
+      <p class="mt-3 opacity-80">An STL file that loads into any slicer or CAD package, and a PLY file if colour matters. Before you pay, you get screenshots of the finished scan to approve. See <a class="link link-primary" href="/#pricing">pricing</a>, which starts at $55.</p>
+    </div>
+    <div>
+      <h2 class="font-display text-2xl font-semibold">Need more than a mesh?</h2>
+      <p class="mt-3 opacity-80">A scan can be turned into an editable CAD model and a STEP file. See <a class="link link-primary" href="/reverse-engineering-3d-scanning/">reverse engineering</a>, or <a class="link link-primary" href="/3d-scanning-for-3d-printing/">scanning for 3D printing</a>.</p>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <a href="/quote/" class="btn btn-primary btn-lg">Get a quote for your part</a>
+  </div>
+</section>
