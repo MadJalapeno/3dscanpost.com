@@ -64,6 +64,10 @@ async function submit(request, env, ctx) {
 
   if (form.get("agree") !== "yes") return fail(400, "Please confirm that you agree to the service disclaimer.");
 
+  // Approximate location from Cloudflare's edge data (no IP stored). Fields can be missing.
+  const geo = { city: request.cf?.city || "", region: request.cf?.region || "", country: request.cf?.country || "" };
+  const geoText = [geo.city, geo.region, geo.country].filter(Boolean).join(", ") || "-";
+
   const details = {
     country: cleanText(form.get("country"), LIMITS.maxShort),
     dimensions: cleanText(form.get("dimensions"), LIMITS.maxShort),
@@ -98,7 +102,7 @@ async function submit(request, env, ctx) {
       });
       stored.push({ key, original: p.original, size: p.file.size });
     }
-    const record = { id, receivedAt: new Date().toISOString(), name, email, ...details, agreedToDisclaimer: true, message, photos: stored };
+    const record = { id, receivedAt: new Date().toISOString(), name, email, ...details, agreedToDisclaimer: true, detectedLocation: geo, message, photos: stored };
     await env.PHOTOS.put(`${id}/submission.json`, JSON.stringify(record, null, 2), { httpMetadata: { contentType: "application/json" } });
   } catch (err) {
     console.error("R2 write failed", id, err);
@@ -123,6 +127,8 @@ async function submit(request, env, ctx) {
     `Dimensions: ${details.dimensions || "-"}`,
     `Material: ${details.material || "-"}`,
     `Turnaround: ${details.turnaround || "-"}`,
+    `Disclaimer: agreed`,
+    `Detected location: ${geoText}`,
     "",
     "Message:",
     message,
