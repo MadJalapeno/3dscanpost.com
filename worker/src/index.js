@@ -62,6 +62,8 @@ async function submit(request, env, ctx) {
   const message = cleanText(form.get("message"), LIMITS.maxMessage, { multiline: true });
   if (!name || !message || !validEmail(email)) return fail(400, "Please fill in your name, a valid email address and a message.");
 
+  if (form.get("agree") !== "yes") return fail(400, "Please confirm that you agree to the service disclaimer.");
+
   const details = {
     country: cleanText(form.get("country"), LIMITS.maxShort),
     dimensions: cleanText(form.get("dimensions"), LIMITS.maxShort),
@@ -96,7 +98,7 @@ async function submit(request, env, ctx) {
       });
       stored.push({ key, original: p.original, size: p.file.size });
     }
-    const record = { id, receivedAt: new Date().toISOString(), name, email, ...details, message, photos: stored };
+    const record = { id, receivedAt: new Date().toISOString(), name, email, ...details, agreedToDisclaimer: true, message, photos: stored };
     await env.PHOTOS.put(`${id}/submission.json`, JSON.stringify(record, null, 2), { httpMetadata: { contentType: "application/json" } });
   } catch (err) {
     console.error("R2 write failed", id, err);
